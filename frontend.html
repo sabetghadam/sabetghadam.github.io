@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Senior Frontend Developer — Abbas Sabetghadam</title>
+    <meta name="description"
+        content="Senior Frontend Developer with 25+ years of experience. Specializing in React 19, Next.js 15, Angular 19, Vite + TypeScript, and Web3 frontends." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet" />
+    <style>
+        /* ─── Reset & Base ─── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #111;
+            --accent: #1565c0;
+            --accent-hover: #0d47a1;
+            --bg: #fafafa;
+            --card: #fff;
+            --border: #e0e0e0;
+            --text: #1a1a1a;
+            --muted: #666;
+            --green: #2e7d32;
+            --orange: #e65100;
+            --blue: #1565c0;
+            --hire: #ff5722;
+            --hire-hover: #e64a19;
+            --hire-glow: rgba(255, 87, 34, 0.4);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        /* ─── Floating Hire Button ─── */
+        .floating-hire {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 999;
+        }
+
+        .hire-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 28px;
+            background: var(--hire);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            box-shadow: 0 8px 30px var(--hire-glow);
+            animation: hirePulse 2s ease-in-out infinite, hireGlow 2s ease-in-out infinite;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hire-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.2) 50%, transparent 60%);
+            animation: hireShine 3s ease-in-out infinite;
+        }
+
+        .hire-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 40px var(--hire-glow);
+            background: var(--hire-hover);
+        }
+
+        .hire-btn:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .hire-icon {
+            width: 20px;
+            height: 20px;
+            animation: hireBounce 0.6s ease-in-out infinite alternate;
+        }
+
+        @keyframes hirePulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.04);
+            }
+        }
+
+        @keyframes hireGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 8px 30px var(--hire-glow);
+            }
+
+            50% {
+                box-shadow: 0 8px 50px rgba(255, 87, 34, 0.6);
+            }
+        }
+
+        @keyframes hireShine {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+
+        @keyframes hireBounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-3px);
+            }
+        }
+
+        /* ─── Modal ─── */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 16px;
+            padding: 0;
+            max-width: 520px;
+            width: 90%;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-header {
+            background: var(--hire);
+            padding: 28px 28px 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .modal-header .modal-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .modal-body {
+            padding: 28px;
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .modal-option {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 20px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .modal-option:hover {
+            border-color: var(--accent);
+            background: #f8faff;
+            transform: translateX(4px);
+        }
+
+        .modal-option-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+
+        .modal-option-icon.email {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .modal-option-icon.telegram {
+            background: #e0f7fa;
+            color: #0088cc;
+        }
+
+        .modal-option-icon.linkedin {
+            background: #e8eaf6;
+            color: #0a66c2;
+        }
+
+        .modal-option-icon.github {
+            background: #f5f5f5;
+            color: #111;
+        }
+
+        .modal-option-text small {
+            display: block;
+            font-weight: 400;
+            color: var(--muted);
+            font-size: 0.8rem;
+            margin-top: 2px;
+        }
+
+        .modal-close {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: transparent;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #888;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .modal-close:hover {
+            border-color: #aaa;
+            color: #555;
+            background: #f5f5f5;
+        }
+
+        .modal-footer-note {
+            text-align: center;
+            font-size: 0.78rem;
+            color: #aaa;
+            margin-top: 16px;
+        }
+
+        /* ─── Header ─── */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 64px;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .profile-pic {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .profile-info h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--primary);
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+
+        .profile-info .role {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .profile-info .role .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .social-icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            color: #555;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .social-icon-link:hover {
+            background: #eee;
+            color: var(--primary);
+        }
+
+        .social-icon-link.email-icon:hover {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .social-icon-link.telegram-icon:hover {
+            background: #e0f7fa;
+            color: #0088cc;
+        }
+
+        .social-icon-link.linkedin-icon:hover {
+            background: #e8eaf6;
+            color: #0a66c2;
+        }
+
+        .social-icon-link.github-icon:hover {
+            background: #f5f5f5;
+            color: #111;
+        }
+
+        .header-right {
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .header-right .email-display {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            background: #f5f5f5;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0 0 56px 0;
+        }
+
+        /* ─── Breadcrumb ─── */
+        .breadcrumb {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* ─── Section ─── */
+        .section {
+            margin-bottom: 56px;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .section-title .badge-new {
+            font-size: 0.65rem;
+            text-transform: none;
+            background: var(--green);
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px;
+        }
+
+        .skill-category h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .skill-category p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .skill-category .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .skill-category .tech-tag {
+            padding: 2px 10px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .skill-category .tech-tag.primary {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .skill-category .tech-tag.new {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .skill-category .tech-tag.legacy {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        thead th {
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #888;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody td {
+            padding: 14px 0;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+            color: #444;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody td:first-child {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 100px;
+        }
+
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8rem;
+            margin-left: 4px;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .badge-live {
+            background: #e8f5e9;
+            color: var(--green);
+        }
+
+        .badge-progress {
+            background: #fff3e0;
+            color: var(--orange);
+        }
+
+        .badge-done {
+            background: #e3f2fd;
+            color: var(--blue);
+        }
+
+        blockquote {
+            border-left: 3px solid #333;
+            padding: 8px 0 8px 20px;
+            margin: 24px 0;
+            color: var(--muted);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 16px 0;
+        }
+
+        .feature-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .feature-item .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-item h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 24px;
+            border-radius: 6px;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.82rem;
+            line-height: 1.8;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        .code-block .comment {
+            color: #6a9955;
+        }
+
+        .code-block .keyword {
+            color: #569cd6;
+        }
+
+        .code-block .string {
+            color: #ce9178;
+        }
+
+        .code-block .func {
+            color: #dcdcaa;
+        }
+
+        .code-block .type {
+            color: #4ec9b0;
+        }
+
+        .cta-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 36px 32px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .cta-section p {
+            color: var(--muted);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            border: 2px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .btn-telegram {
+            background: #0088cc;
+            color: #fff;
+            border: 2px solid #0088cc;
+        }
+
+        .btn-telegram:hover {
+            background: #006da3;
+            border-color: #006da3;
+        }
+
+        .btn-linkedin {
+            background: #0a66c2;
+            color: #fff;
+            border: 2px solid #0a66c2;
+        }
+
+        .btn-linkedin:hover {
+            background: #084e96;
+            border-color: #084e96;
+        }
+
+        .btn-github {
+            background: #111;
+            color: #fff;
+            border: 2px solid #111;
+        }
+
+        .btn-github:hover {
+            background: #333;
+            border-color: #333;
+        }
+
+        .availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        .availability-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .footer-note {
+            margin-top: 80px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: #999;
+            text-align: center;
+        }
+
+        .inline-code {
+            background: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.85rem;
+            color: #d63384;
+        }
+
+        .mobile-note {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .mobile-note p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .mobile-note a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .mobile-note a:hover {
+            text-decoration: underline;
+        }
+
+        .legacy-note {
+            background: #fff3e0;
+            border-radius: 8px;
+            padding: 16px 20px;
+            border-right: 4px solid #e65100;
+            margin-top: 16px;
+        }
+
+        .legacy-note p {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0;
+        }
+
+        .legacy-note strong {
+            color: #333;
+        }
+
+        .realtime-note {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 16px 20px;
+            border-right: 4px solid #1565c0;
+            margin-top: 16px;
+        }
+
+        .realtime-note p {
+            font-size: 0.9rem;
+            color: #333;
+            margin: 0;
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-right {
+                text-align: left;
+                margin-top: 16px;
+            }
+
+            .profile-info h1 {
+                font-size: 1.8rem;
+            }
+
+            .skill-grid,
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            tbody td:first-child {
+                min-width: 80px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+
+            .floating-hire {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .hire-btn {
+                padding: 14px 22px;
+                font-size: 0.9rem;
+            }
+
+            .modal {
+                width: 95%;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+
+            .modal-option {
+                padding: 14px 16px;
+            }
+
+            .section-title .badge-new {
+                display: inline-block;
+                margin-top: 4px;
+            }
+
+            .legacy-note,
+            .realtime-note {
+                padding: 12px 16px;
+            }
+
+            .legacy-note p,
+            .realtime-note p {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ─── Floating Hire Button ─── -->
+    <div class="floating-hire">
+        <button class="hire-btn" onclick="openHireModal()" aria-label="Hire Me Now">
+            <svg class="hire-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            HIRE ME
+        </button>
+    </div>
+
+    <!-- ─── Hire Modal ─── -->
+    <div class="modal-overlay" id="hireModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Let's Build Together 🚀</h2>
+                <div class="modal-subtitle">Choose how you'd like to connect</div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-options">
+                    <a href="mailto:sabetsoft@gmail.com?subject=Frontend%20Project%20Inquiry" class="modal-option">
+                        <div class="modal-option-icon email">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                        </div>
+                        <div class="modal-option-text">
+                            Send an Email
+                            <small>sabetsoft@gmail.com</small>
+                        </div>
+                    </a>
+                    <a href="https://t.me/sabetsoft_dev" target="_blank" rel="noopener" class="modal-option">
+                        <div class="modal-option-icon telegram">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.015-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.145.118.185.276.208.542z" />
+                            </svg>
+                        </div>
+                        <div class="modal-option-text">
+                            Chat on Telegram
+                            <small>@sabetsoft_dev</small>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/asabetghadam" target="_blank" rel="noopener"
+                        class="modal-option">
+                        <div class="modal-option-icon linkedin">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </div>
+                        <div class="modal-option-text">
+                            Connect on LinkedIn
+                            <small>Professional profile</small>
+                        </div>
+                    </a>
+                    <a href="https://github.com/sabetghadam" target="_blank" rel="noopener" class="modal-option">
+                        <div class="modal-option-icon github">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </div>
+                        <div class="modal-option-text">
+                            View GitHub
+                            <small>Open source &amp; project samples</small>
+                        </div>
+                    </a>
+                </div>
+                <button class="modal-close" onclick="closeHireModal()">Maybe Later</button>
+                <div class="modal-footer-note">Typically respond within a few hours</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- ─── HEADER ─── -->
+        <div class="header">
+            <div class="header-left">
+                <div class="profile-section">
+                    <img src="https://avatars.githubusercontent.com/u/6519453?s=96&v=4" alt="Abbas Sabetghadam"
+                        class="profile-pic" />
+                    <div class="profile-info">
+                        <h1>Abbas Sabetghadam</h1>
+                        <div class="role">
+                            Senior Frontend Developer &amp; Software Architect —
+                            <span class="highlight">25+ Years of Experience</span>
+                        </div>
+                        <div class="social-icons">
+                            <a href="javascript:void(0)" class="social-icon-link email-icon" onclick="copyEmail()"
+                                title="Copy Email">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                            </a>
+                            <a href="https://t.me/sabetsoft_dev" target="_blank" rel="noopener"
+                                class="social-icon-link telegram-icon" title="Telegram">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.015-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.145.118.185.276.208.542z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/asabetghadam" target="_blank" rel="noopener"
+                                class="social-icon-link linkedin-icon" title="LinkedIn">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                            </a>
+                            <a href="https://github.com/sabetghadam" target="_blank" rel="noopener"
+                                class="social-icon-link github-icon" title="GitHub">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <span class="email-display" id="emailDisplay">sabetsoft@gmail.com</span>
+                <div id="copyToast"
+                    style="font-size:0.7rem;color:var(--green);margin-top:4px;opacity:0;transition:opacity 0.3s;">
+                    Copied!</div>
+            </div>
+        </div>
+
+        <hr />
+
+        <!-- ─── BREADCRUMB ─── -->
+        <div class="breadcrumb">
+            <a href="index.html">← Back to Home</a> / Senior Frontend Developer
+        </div>
+
+        <!-- ─── OVERVIEW ─── -->
+        <div class="section">
+            <div class="section-title">Overview</div>
+            <p style="font-size:1.05rem; color:#333; margin-bottom:16px;">
+                Senior Frontend Developer with <strong>25+ years</strong> of experience —
+                from <span class="inline-code">HTML</span>, <span class="inline-code">CSS</span>,
+                and <span class="inline-code">JavaScript</span> to modern frameworks like
+                <span class="inline-code">React 19</span>, <span class="inline-code">Next.js 15</span>,
+                <span class="inline-code">Angular 19</span>, and <span class="inline-code">Vue 3</span>.
+            </p>
+            <p style="color:var(--muted);">
+                Over the last 3 years, I've focused on building high-performance
+                <strong>Web3</strong> and <strong>AI platforms</strong> using React 19,
+                Next.js 15, Angular 19, and <strong>Vite + TypeScript</strong>.
+            </p>
+            <p style="color:var(--muted); margin-top:8px;">
+                <strong>16+ Angular projects</strong> (2017–2026) and <strong>8+ React projects</strong> (2023–2026)
+                across fintech, e-commerce, gaming, and blockchain industries.
+            </p>
+            <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:16px;">
+                <span
+                    style="background:#e8f5e9; padding:4px 14px; border-radius:20px; font-size:0.8rem; color:#2e7d32;">
+                    ✅ 25+ Years Experience
+                </span>
+                <span
+                    style="background:#e3f2fd; padding:4px 14px; border-radius:20px; font-size:0.8rem; color:#1565c0;">
+                    ✅ 16+ Angular Projects
+                </span>
+                <span
+                    style="background:#fff3e0; padding:4px 14px; border-radius:20px; font-size:0.8rem; color:#e65100;">
+                    ✅ 8+ React Projects
+                </span>
+                <span
+                    style="background:#f3e5f5; padding:4px 14px; border-radius:20px; font-size:0.8rem; color:#7b1fa2;">
+                    ✅ Web3 &amp; AI Platforms
+                </span>
+            </div>
+        </div>
+
+        <!-- ─── MODERN TECH STACK ─── -->
+        <div class="section">
+            <div class="section-title">
+                Modern Frontend Stack
+                <span class="badge-new">2023–2026</span>
+            </div>
+            <div class="skill-grid">
+                <div class="skill-category">
+                    <h3>Web Frameworks</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag primary">React 19</span>
+                        <span class="tech-tag primary">Next.js 15</span>
+                        <span class="tech-tag primary">Angular 19</span>
+                        <span class="tech-tag">Vue 3</span>
+                        <span class="tech-tag">Nuxt.js</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Language &amp; Build Tools</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag primary">TypeScript</span>
+                        <span class="tech-tag primary">Vite</span>
+                        <span class="tech-tag">JavaScript (ES6+)</span>
+                        <span class="tech-tag">Webpack</span>
+                        <span class="tech-tag">esbuild</span>
+                    </div>
+                    <p style="margin-top:8px; font-size:0.8rem; color:#888;">
+                        ⚡ Currently building <strong>Vanilla TypeScript</strong> projects with
+                        <strong>Vite</strong> — fast dev server, instant HMR, production-ready builds.
+                    </p>
+                </div>
+                <div class="skill-category">
+                    <h3>Styling &amp; UI</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">Sass/SCSS</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">Figma</span>
+                        <span class="tech-tag">Storybook</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>State Management</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Redux Toolkit</span>
+                        <span class="tech-tag">Zustand</span>
+                        <span class="tech-tag">NgRx</span>
+                        <span class="tech-tag">Pinia</span>
+                        <span class="tech-tag">TanStack Query</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Web3 &amp; Blockchain</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Web3.js</span>
+                        <span class="tech-tag">Ethers.js</span>
+                        <span class="tech-tag">Solidity</span>
+                        <span class="tech-tag">Hardhat</span>
+                        <span class="tech-tag">Foundry</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Real-Time &amp; Communication</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag primary">WebSocket</span>
+                        <span class="tech-tag primary">SignalR</span>
+                        <span class="tech-tag">Socket.io</span>
+                        <span class="tech-tag">Server-Sent Events (SSE)</span>
+                        <span class="tech-tag">Redis Pub/Sub</span>
+                    </div>
+                    <p style="margin-top:8px; font-size:0.8rem; color:#888;">
+                        🔄 Built live chat systems, real-time dashboards, and instant notifications
+                        with WebSocket and SignalR for 500+ concurrent users.
+                    </p>
+                </div>
+                <div class="skill-category">
+                    <h3>Testing &amp; Quality</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Jest</span>
+                        <span class="tech-tag">Vitest</span>
+                        <span class="tech-tag">React Testing Library</span>
+                        <span class="tech-tag">Playwright</span>
+                        <span class="tech-tag">Cypress</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── ANGULAR EXPERIENCE ─── -->
+        <div class="section">
+            <div class="section-title">
+                Angular — 2017 to 2026
+                <span class="badge-new">16+ Projects</span>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Period</th>
+                            <th>Version</th>
+                            <th>Key Projects</th>
+                            <th>Projects</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2017–2018</td>
+                            <td>AngularJS 1.2</td>
+                            <td>Coinatik, BitBix</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>2018–2020</td>
+                            <td>Angular 2–9 (Ivy)</td>
+                            <td>Web3 Apps, Enterprise Dashboards</td>
+                            <td>6+</td>
+                        </tr>
+                        <tr>
+                            <td>2021–2023</td>
+                            <td>Angular 12–16</td>
+                            <td>Enterprise Apps, Admin Panels</td>
+                            <td>5+</td>
+                        </tr>
+                        <tr>
+                            <td>2024–2026</td>
+                            <td>Angular 17–19</td>
+                            <td>ECOMSYS, Web3 Platforms</td>
+                            <td>3+</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ─── REACT EXPERIENCE ─── -->
+        <div class="section">
+            <div class="section-title">
+                React — 2023 to 2026
+                <span class="badge-new">8+ Projects</span>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Version</th>
+                            <th>Project</th>
+                            <th>Tech Stack</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2023</td>
+                            <td>React 18</td>
+                            <td>Arbify.site <a href="https://arbify.site" class="project-link">↗</a></td>
+                            <td>React · TypeScript · WebSocket · Chart.js</td>
+                            <td><span class="badge badge-live">Live</span></td>
+                        </tr>
+                        <tr>
+                            <td>2024</td>
+                            <td>React 19</td>
+                            <td>AIConnective <a href="https://app.aiconnective.tech" class="project-link">↗</a></td>
+                            <td>React 19 · Next.js 15 · Web3.js · Tailwind</td>
+                            <td><span class="badge badge-live">Live</span></td>
+                        </tr>
+                        <tr>
+                            <td>2024</td>
+                            <td>React 19</td>
+                            <td>ERC404 — Fractional NFT</td>
+                            <td>React 19 · Hardhat · Solidity</td>
+                            <td><span class="badge badge-progress">90%</span></td>
+                        </tr>
+                        <tr>
+                            <td>2024</td>
+                            <td>React 19</td>
+                            <td>DEX + Staking Platform</td>
+                            <td>React 19 · Web3.js · Solidity</td>
+                            <td><span class="badge badge-live">Deployed</span></td>
+                        </tr>
+                        <tr>
+                            <td>2025–2026</td>
+                            <td>React 19</td>
+                            <td>6+ Web3 Dashboards</td>
+                            <td>React 19 · Vite · TypeScript · Web3.js</td>
+                            <td><span class="badge badge-done">Complete</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ─── REAL-TIME & WEBSOCKET SYSTEMS ─── -->
+        <div class="section">
+            <div class="section-title">
+                Real-Time &amp; WebSocket Systems
+                <span class="badge-new">Live Chat · Dashboards</span>
+            </div>
+            <p style="color:var(--muted); margin-bottom:16px;">
+                I've built real-time features using <strong>WebSocket</strong> and
+                <strong>SignalR</strong> for instant messaging, live dashboards,
+                and real-time data streaming.
+            </p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Project</th>
+                            <th>Technology</th>
+                            <th>Real-Time Feature</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Arbify.site</strong></td>
+                            <td>WebSocket · Node.js · React</td>
+                            <td>Live arbitrage data, real-time price updates from exchanges, 500+ concurrent users</td>
+                            <td><span class="badge badge-live">Live</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Coinatik</strong></td>
+                            <td>WebSocket · ASP.NET MVC · AngularJS</td>
+                            <td>Real-time chat between buyer and seller on P2P exchange platform</td>
+                            <td><span class="badge badge-done">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>CEX Arbitrage Engine</strong></td>
+                            <td>WebSocket · Node.js · Python</td>
+                            <td>Live order book streaming, &lt;100ms latency arbitrage detection</td>
+                            <td><span class="badge badge-progress">60%</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>ECOMSYS</strong></td>
+                            <td>SignalR · .NET Core · Angular</td>
+                            <td>Real-time notifications for orders, inventory updates, and user activity</td>
+                            <td><span class="badge badge-live">Live</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="realtime-note">
+                <p>
+                    <strong>⚡ Key Real-Time Skills:</strong>
+                    WebSocket (ws, Socket.io) · SignalR (.NET) · Server-Sent Events (SSE) ·
+                    Live Chat Systems · Real-Time Dashboards · Event-Driven Architecture ·
+                    Pub/Sub (Redis) · Low-Latency Data Streaming
+                </p>
+            </div>
+        </div>
+
+        <!-- ─── VITE + TYPESCRIPT ─── -->
+        <div class="section">
+            <div class="section-title">
+                Vite + TypeScript — Modern Build Tool
+                <span class="badge-new">2025–2026</span>
+            </div>
+            <p style="color:var(--muted); margin-bottom:12px;">
+                Currently building <strong>Vanilla TypeScript</strong> projects using
+                <strong>Vite</strong> as the build tool — fast dev server, instant HMR,
+                and production-ready builds. No framework overhead, pure TypeScript
+                for lightweight, high-performance dashboards.
+            </p>
+            <div class="code-block">
+                <span class="comment">// vite.config.ts — Modern build tool with instant HMR</span>
+                <span class="keyword">import</span> { defineConfig } <span class="keyword">from</span> <span
+                    class="string">'vite'</span>;
+
+                <span class="keyword">export default</span> defineConfig({
+                &nbsp;&nbsp;plugins: [],
+                &nbsp;&nbsp;server: {
+                &nbsp;&nbsp;&nbsp;&nbsp;port: 3000,
+                &nbsp;&nbsp;&nbsp;&nbsp;open: <span class="keyword">true</span>,
+                &nbsp;&nbsp;},
+                &nbsp;&nbsp;build: {
+                &nbsp;&nbsp;&nbsp;&nbsp;target: <span class="string">'es2020'</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;minify: <span class="string">'esbuild'</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;sourcemap: <span class="keyword">true</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;rollupOptions: {
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input: <span class="string">'index.html'</span>,
+                &nbsp;&nbsp;&nbsp;&nbsp;},
+                &nbsp;&nbsp;},
+                });
+
+                <span class="comment">// main.ts — Type-safe, modular, and fast</span>
+                <span class="keyword">import</span> { renderApp } <span class="keyword">from</span> <span
+                    class="string">'./app'</span>;
+                <span class="keyword">import</span> <span class="string">'./style.css'</span>;
+
+                <span class="keyword">const</span> root = document.<span class="func">getElementById</span>(<span
+                    class="string">'app'</span>);
+                <span class="keyword">if</span> (root) {
+                &nbsp;&nbsp;renderApp(root);
+                } <span class="keyword">else</span> {
+                &nbsp;&nbsp;<span class="keyword">throw</span> <span class="keyword">new</span> <span
+                    class="func">Error</span>(<span class="string">'Root element not found'</span>);
+                }
+            </div>
+        </div>
+
+        <!-- ─── FRONTEND ARCHITECTURE ─── -->
+        <div class="section">
+            <div class="section-title">Frontend Architecture Expertise</div>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="icon">🧩</div>
+                    <h4>Component Design</h4>
+                    <p>Atomic design, reusable components, design systems, Storybook, and component-driven development.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">⚡</div>
+                    <h4>Performance</h4>
+                    <p>Code splitting, lazy loading, memoization, virtual lists, Core Web Vitals (CLS, LCP, FID).</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🔒</div>
+                    <h4>Security</h4>
+                    <p>XSS, CSRF, Content Security Policy, OAuth2, JWT, and secure input sanitization.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">📱</div>
+                    <h4>Responsive &amp; Accessibility</h4>
+                    <p>Mobile-first design, WCAG 2.1 AA, ARIA, keyboard navigation, cross-browser compatibility.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── OS & KERNEL DEVELOPMENT ─── -->
+        <div class="section">
+            <div class="section-title">
+                OS &amp; Kernel Development
+                <span class="badge-new">2010+</span>
+            </div>
+            <blockquote>
+                Beyond web and blockchain, I've built a <strong>personal operating system</strong> from scratch —
+                including mouse and graphics drivers, memory management, and hardware interfacing.
+            </blockquote>
+            <div class="feature-grid"
+                style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom:12px;">
+                <div class="feature-item">
+                    <div class="icon">💻</div>
+                    <h4>Personal OS Development</h4>
+                    <p>Custom OS with mouse &amp; graphics drivers</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🖱️</div>
+                    <h4>Hardware Drivers</h4>
+                    <p>Mouse, graphics, and keyboard drivers in Assembly &amp; C</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">⚙️</div>
+                    <h4>Kernel &amp; Memory Management</h4>
+                    <p>Custom kernel with memory allocation and process management</p>
+                </div>
+            </div>
+            <div style="padding:12px 16px; background:#f5f5f5; border-radius:6px;">
+                <p style="font-size:0.85rem; color:#555; margin:0;">
+                    <strong>Tech Stack:</strong> Assembly x86 · C · Hardware Interfacing · BIOS Interrupts · VGA
+                    Graphics
+                </p>
+            </div>
+        </div>
+
+        <!-- ─── LEGACY & HISTORICAL EXPERIENCE ─── -->
+        <div class="section">
+            <div class="section-title">
+                Legacy &amp; Historical Experience — .NET &amp; WebForms Era
+                <span class="badge-new">2003–2018</span>
+            </div>
+            <blockquote>
+                I started my career with <strong>ASP.NET WebForms</strong> in 2003, long before modern
+                frontend frameworks existed. This era gave me a deep understanding of HTTP lifecycle,
+                server-side rendering, and the evolution of web development.
+            </blockquote>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Period</th>
+                            <th>Technology Stack</th>
+                            <th>Key Concepts &amp; Skills</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>2003–2010</strong></td>
+                            <td>ASP.NET WebForms · C# · SQL Server · Visual Studio 2003–2008</td>
+                            <td>
+                                Server Controls, ViewState, PostBack, Page Lifecycle, DataGrid, GridView,
+                                Master Pages, User Controls, Session Management, Authentication (Forms Auth)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>2010–2015</strong></td>
+                            <td>ASP.NET WebForms · AJAX · jQuery · SQL Server 2008–2012</td>
+                            <td>
+                                <strong>AJAX</strong> (UpdatePanel, ScriptManager, Page Methods),
+                                <strong>jQuery</strong> (DOM manipulation, AJAX calls, client-side validation),
+                                Web Services (.asmx), WCF Services, T-SQL Stored Procedures
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>2015–2018</strong></td>
+                            <td>ASP.NET MVC 5 · Web API 2 · Entity Framework · SQL Server 2014+</td>
+                            <td>
+                                <strong>MVC Pattern</strong> (Controllers, Views, Razor),
+                                <strong>Web API</strong> (RESTful services, JSON, HTTP verbs),
+                                Dependency Injection, Unit of Work, Repository Pattern,
+                                Async/Await, OWIN, SignalR
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>2018–Present</strong></td>
+                            <td>.NET Core 2–8 · C# · SQL Server · MongoDB</td>
+                            <td>
+                                <strong>Backend only (since 2018)</strong> — I moved frontend to Angular &amp; React,
+                                but continued backend development with .NET Core.
+                                Microservices, Minimal APIs, Entity Framework Core,
+                                Dependency Injection, Middleware, JWT Authentication,
+                                Redis Caching, Background Services (IHostedService),
+                                Performance Optimization, Query Tuning
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="legacy-note">
+                <p>
+                    <strong>📌 Note:</strong> I worked with <strong>ASP.NET WebForms</strong> and
+                    <strong>AJAX</strong> from 2003 to 2015, building enterprise applications for
+                    government and corporate clients. In 2015, I transitioned to
+                    <strong>ASP.NET MVC</strong> and <strong>Web API</strong>, and since 2018,
+                    I've been using <strong>.NET Core</strong> for backend development while
+                    focusing on <strong>Angular</strong> and <strong>React</strong> for frontend.
+                    I <strong>did not</strong> move to Blazor — I chose the Angular/React ecosystem instead.
+                </p>
+            </div>
+        </div>
+
+        <!-- ─── NOTE ABOUT MOBILE ─── -->
+        <div class="section">
+            <div class="mobile-note">
+                <p>
+                    📱 <strong>Note on Mobile:</strong> I also have experience in mobile development —
+                    <strong>Xamarin.Forms</strong> (Probin — C#, XML, Hardware Scanner) and
+                    <strong>Android Native</strong> (Jandro, Driver Tracking — Java, GPS, REST APIs).
+                    However, this is <strong>not</strong> part of my Frontend Web portfolio.
+                    See <a href="/mobile">Senior Mobile Developer</a> for details.
+                </p>
+            </div>
+        </div>
+
+        <!-- ─── CTA ─── -->
+        <div class="cta-section">
+            <div class="availability">
+                <span class="availability-dot"></span>
+                Available for Frontend Projects
+            </div>
+            <h2>Need a Senior Frontend Developer?</h2>
+            <p>Let's build something exceptional together — from design systems to full-scale applications.</p>
+            <div class="cta-buttons">
+                <a href="mailto:sabetsoft@gmail.com?subject=Frontend%20Project%20Inquiry" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    Start a Project
+                </a>
+                <a href="https://t.me/sabetsoft_dev" class="btn btn-telegram" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.015-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.145.118.185.276.208.542z" />
+                    </svg>
+                    Telegram
+                </a>
+                <a href="https://www.linkedin.com/in/asabetghadam" class="btn btn-linkedin" target="_blank"
+                    rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/sabetghadam" class="btn btn-github" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            Most source code is private due to client confidentiality. This page includes architecture notes and project
+            summaries.<br />
+            &copy; Abbas Sabetghadam — sabetsoft@gmail.com
+        </div>
+
+    </div>
+
+    <script>
+        function copyEmail() {
+            navigator.clipboard.writeText('sabetsoft@gmail.com').then(function () {
+                var toast = document.getElementById('copyToast');
+                toast.style.opacity = '1';
+                setTimeout(function () {
+                    toast.style.opacity = '0';
+                }, 1500);
+            });
+        }
+
+        function openHireModal() {
+            document.getElementById('hireModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeHireModal() {
+            document.getElementById('hireModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('hireModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeHireModal();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeHireModal();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

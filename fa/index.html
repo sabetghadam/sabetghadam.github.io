@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>عباس ثابت‌قدم — معمار نرم‌افزار و مهندس بلاک‌چین | ۲۵ سال تجربه</title>
+    <meta name="description" content="معمار نرم‌افزار و مهندس بلاک‌چین با ۲۵+ سال تجربه. توسعه قراردادهای هوشمند، سیستم‌های معاملاتی، معماری سازمانی، فول‌استک و مشاوره فنی.">
+    <meta name="keywords" content="معمار نرم‌افزار, مهندس بلاک‌چین, سالیدیتی, Solidity, قرارداد هوشمند, DEX, استیکینگ, آربیتراژ, React, Node.js, مشاوره فنی, عباس ثابت‌قدم">
+    <meta name="author" content="عباس ثابت‌قدم">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://me.arbify.site/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="عباس ثابت‌قدم — معمار نرم‌افزار و مهندس بلاک‌چین">
+    <meta property="og:description" content="۲۵+ سال تجربه در معماری نرم‌افزار، بلاک‌چین و سیستم‌های معاملاتی.">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/6519453?s=200&v=4">
+    <meta property="og:url" content="https://me.arbify.site/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="عباس ثابت‌قدم — معمار نرم‌افزار و مهندس بلاک‌چین">
+    <meta name="twitter:description" content="۲۵+ سال تجربه در معماری نرم‌افزار، بلاک‌چین و سیستم‌های معاملاتی.">
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/6519453?s=200&v=4">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "عباس ثابت‌قدم",
+        "alternateName": "Abbas Sabetghadam",
+        "url": "https://me.arbify.site",
+        "image": "https://avatars.githubusercontent.com/u/6519453?s=200&v=4",
+        "jobTitle": "Software Architect & Blockchain Engineer",
+        "sameAs": [
+            "https://github.com/sabetghadam",
+            "https://youtube.com/@sabetsoft",
+            "https://t.me/sabetsoft_dev",
+            "https://www.linkedin.com/in/asabetghadam"
+        ]
+    }
+    </script>
+    
+    <!-- Vazirmatn Font -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    
+    <style>
+        :root {
+            --primary: #111;
+            --accent: #1565c0;
+            --accent-hover: #0d47a1;
+            --bg: #fafafa;
+            --card: #fff;
+            --border: #e0e0e0;
+            --text: #1a1a1a;
+            --muted: #666;
+            --green: #2e7d32;
+            --orange: #e65100;
+            --blue: #1565c0;
+            --hire: #ff5722;
+            --hire-hover: #e64a19;
+            --hire-glow: rgba(255, 87, 34, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Vazirmatn', 'IRANSans', 'Tahoma', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 860px; margin: 0 auto; padding: 60px 30px; }
+
+        /* ── Floating Hire Button ── */
+        .floating-hire {
+            position: fixed;
+            bottom: 32px;
+            left: 32px;
+            z-index: 999;
+        }
+
+        .hire-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 28px;
+            background: var(--hire);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Vazirmatn', 'IRANSans', 'Tahoma', sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            box-shadow: 0 8px 30px var(--hire-glow);
+            animation: hirePulse 2s ease-in-out infinite, hireGlow 2s ease-in-out infinite;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hire-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
+            animation: hireShine 3s ease-in-out infinite;
+        }
+
+        .hire-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 40px var(--hire-glow);
+            background: var(--hire-hover);
+        }
+
+        .hire-btn:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .hire-icon {
+            width: 20px;
+            height: 20px;
+            animation: hireBounce 0.6s ease-in-out infinite alternate;
+        }
+
+        @keyframes hirePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+
+        @keyframes hireGlow {
+            0%, 100% { box-shadow: 0 8px 30px var(--hire-glow); }
+            50% { box-shadow: 0 8px 50px rgba(255, 87, 34, 0.6); }
+        }
+
+        @keyframes hireShine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        @keyframes hireBounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-3px); }
+        }
+
+        /* ── Modal Overlay ── */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 16px;
+            padding: 0;
+            max-width: 520px;
+            width: 90%;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.25);
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-header {
+            background: var(--hire);
+            padding: 28px 28px 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .modal-header .modal-subtitle {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .modal-body {
+            padding: 28px;
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .modal-option {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 20px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-align: right;
+        }
+
+        .modal-option:hover {
+            border-color: var(--accent);
+            background: #f8faff;
+            transform: translateX(-4px);
+        }
+
+        .modal-option-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+
+        .modal-option-icon.email { background: #e3f2fd; color: #1565c0; }
+        .modal-option-icon.telegram { background: #e0f7fa; color: #0088cc; }
+        .modal-option-icon.ita { background: #fff3e0; color: #e65100; }
+        .modal-option-icon.linkedin { background: #e8eaf6; color: #0a66c2; }
+
+        .modal-option-text small {
+            display: block;
+            font-weight: 400;
+            color: var(--muted);
+            font-size: 0.78rem;
+            margin-top: 2px;
+        }
+
+        .modal-close {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: transparent;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #888;
+            transition: all 0.2s;
+            font-family: 'Vazirmatn', 'IRANSans', 'Tahoma', sans-serif;
+        }
+
+        .modal-close:hover {
+            border-color: #aaa;
+            color: #555;
+            background: #f5f5f5;
+        }
+
+        .modal-footer-note {
+            text-align: center;
+            font-size: 0.78rem;
+            color: #aaa;
+            margin-top: 16px;
+        }
+
+        /* ── Header ── */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 64px;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .profile-pic {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .profile-info h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--primary);
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+
+        .profile-info .role {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .social-icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            color: #555;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .social-icon-link:hover {
+            background: #eee;
+            color: var(--primary);
+        }
+
+        .social-icon-link.email-icon:hover {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .social-icon-link.telegram-icon:hover {
+            background: #e0f7fa;
+            color: #0088cc;
+        }
+
+        .social-icon-link.ita-icon:hover {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .social-icon-link.linkedin-icon:hover {
+            background: #e8eaf6;
+            color: #0a66c2;
+        }
+
+        .social-icon-link.github-icon:hover {
+            background: #f5f5f5;
+            color: #111;
+        }
+
+        .social-icon-link.youtube-icon:hover {
+            background: #ffebee;
+            color: #cc0000;
+        }
+
+        .header-right {
+            text-align: left;
+            flex-shrink: 0;
+        }
+
+        .header-right .email-display {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            background: #f5f5f5;
+            padding: 6px 12px;
+            border-radius: 4px;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        hr { border: none; border-top: 1px solid var(--border); margin: 0 0 56px 0; }
+
+        /* ── Section ── */
+        .section { margin-bottom: 56px; }
+        .section-title { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #333; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
+        .skill-category h3 { font-size: 0.9rem; font-weight: 600; color: #222; margin-bottom: 10px; }
+        .skill-category p { font-size: 0.88rem; color: var(--muted); line-height: 1.9; }
+
+        .table-wrapper { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        thead th { text-align: right; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: #888; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        tbody td { padding: 14px 0; border-bottom: 1px solid #f0f0f0; vertical-align: top; color: #444; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody td:first-child { font-weight: 600; color: var(--primary); min-width: 200px; }
+        .project-link { color: var(--accent); text-decoration: none; font-weight: 500; font-size: 0.8rem; margin-right: 4px; }
+        .project-link:hover { text-decoration: underline; }
+
+        .badge { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+        .badge-live { background: #e8f5e9; color: var(--green); }
+        .badge-progress { background: #fff3e0; color: var(--orange); }
+        .badge-done { background: #e3f2fd; color: var(--blue); }
+
+        blockquote { border-right: 3px solid #333; border-left: none; padding: 8px 20px 8px 0; margin: 24px 0; color: var(--muted); font-style: italic; font-size: 0.95rem; }
+
+        .code-block { background: #1e1e1e; color: #d4d4d4; padding: 24px; border-radius: 6px; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; font-size: 0.82rem; line-height: 1.8; overflow-x: auto; margin: 16px 0; direction: ltr; text-align: left; }
+        .code-block .comment { color: #6a9955; }
+        .code-block .keyword { color: #569cd6; }
+
+        .compare-table thead th:last-child { color: var(--primary); }
+        .compare-table tbody td:last-child { font-weight: 500; color: var(--primary); }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .service-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px; transition: border-color 0.2s; text-align: right; }
+        .service-card:hover { border-color: #aaa; }
+        .service-card h3 { font-size: 1rem; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
+        .service-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.9; }
+        .service-icon { font-size: 1.5rem; margin-bottom: 12px; }
+
+        .cta-section { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 36px 32px; text-align: center; margin-top: 40px; }
+        .cta-section h2 { font-size: 1.3rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        .cta-section p { color: var(--muted); margin-bottom: 24px; font-size: 0.95rem; }
+        .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 6px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; font-family: 'Vazirmatn', 'IRANSans', 'Tahoma', sans-serif; }
+        .btn-primary { background: var(--accent); color: #fff; border: 2px solid var(--accent); }
+        .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+        .btn-linkedin { background: #0a66c2; color: #fff; border: 2px solid #0a66c2; }
+        .btn-linkedin:hover { background: #084e96; border-color: #084e96; }
+        .btn-telegram { background: #0088cc; color: #fff; border: 2px solid #0088cc; }
+        .btn-telegram:hover { background: #006da3; border-color: #006da3; }
+        .btn-ita { background: #e65100; color: #fff; border: 2px solid #e65100; }
+        .btn-ita:hover { background: #bf360c; border-color: #bf360c; }
+        .btn-youtube { background: #cc0000; color: #fff; border: 2px solid #cc0000; }
+        .btn-youtube:hover { background: #990000; border-color: #990000; }
+
+        .availability { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 20px; font-size: 0.85rem; color: var(--green); font-weight: 500; }
+        .availability-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        .footer-note { margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 0.8rem; color: #999; text-align: center; }
+
+        @media (max-width: 650px) {
+            .container { padding: 40px 20px; }
+            .header { flex-direction: column; align-items: flex-start; }
+            .header-right { text-align: right; margin-top: 16px; }
+            .profile-info h1 { font-size: 1.7rem; }
+            .skills-grid, .services-grid { grid-template-columns: 1fr; }
+            tbody td:first-child { min-width: 140px; }
+            .cta-buttons { flex-direction: column; }
+            .btn { justify-content: center; }
+            .floating-hire { bottom: 20px; left: 20px; }
+            .hire-btn { padding: 14px 22px; font-size: 0.9rem; }
+            .modal { width: 95%; }
+            .modal-body { padding: 20px; }
+            .modal-option { padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ──────────── دکمه شناور استخدام ──────────── -->
+    <div class="floating-hire">
+        <button class="hire-btn" onclick="openHireModal()" aria-label="استخدام من">
+            <svg class="hire-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            استخدام فوری
+        </button>
+    </div>
+
+    <!-- ──────────── مودال استخدام ──────────── -->
+    <div class="modal-overlay" id="hireModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>بیا باهم کار کنیم 🚀</h2>
+                <div class="modal-subtitle">چطور می‌خوای ارتباط بگیری؟</div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-options">
+                    <a href="mailto:sabetsoft@gmail.com?subject=درخواست%20پروژه%20-%20استخدام" class="modal-option">
+                        <div class="modal-option-icon email">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="modal-option-text">
+                            ارسال ایمیل
+                            <small>sabetsoft@gmail.com — بهترین گزینه برای پروپوزال‌های مفصل</small>
+                        </div>
+                    </a>
+                    <a href="https://t.me/sabetsoft_dev" target="_blank" rel="noopener" class="modal-option">
+                        <div class="modal-option-icon telegram">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.015-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.145.118.185.276.208.542z"/></svg>
+                        </div>
+                        <div class="modal-option-text">
+                            گفتگو در تلگرام
+                            <small>@sabetsoft_dev — سریع‌ترین پاسخ</small>
+                        </div>
+                    </a>
+                    <a href="https://eitaa.com/sabetsoft" target="_blank" rel="noopener" class="modal-option">
+                        <div class="modal-option-icon ita">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/></svg>
+                        </div>
+                        <div class="modal-option-text">
+                            گفتگو در ایتا
+                            <small>@sabetsoft — پیام‌رسان ایرانی</small>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/asabetghadam/" target="_blank" rel="noopener" class="modal-option">
+                        <div class="modal-option-icon linkedin">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </div>
+                        <div class="modal-option-text">
+                            ارتباط در لینکدین
+                            <small>پروفایل حرفه‌ای و توصیه‌نامه‌ها</small>
+                        </div>
+                    </a>
+                </div>
+                <button class="modal-close" onclick="closeHireModal()">بعداً</button>
+                <div class="modal-footer-note">معمولاً در عرض چند ساعت پاسخ می‌دهم</div>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+
+    <!-- ──────────── HEADER ──────────── -->
+    <div class="header">
+        <div class="header-left">
+            <div class="profile-section">
+                <img src="https://avatars.githubusercontent.com/u/6519453?s=96&v=4" alt="عباس ثابت‌قدم" class="profile-pic">
+                <div class="profile-info">
+                    <h1>عباس ثابت‌قدم</h1>
+                    <div class="role">معمار نرم‌افزار و مهندس بلاک‌چین — ۲۵ سال تجربه</div>
+                    <div class="social-icons">
+                        <!-- ایمیل (کپی با کلیک) -->
+                        <a href="javascript:void(0)" class="social-icon-link email-icon" onclick="copyEmail()" title="کپی ایمیل">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </a>
+                        <!-- تلگرام -->
+                        <a href="https://t.me/sabetsoft_dev" target="_blank" rel="noopener" class="social-icon-link telegram-icon" title="تلگرام">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.015-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.145.118.185.276.208.542z"/></svg>
+                        </a>
+                        <!-- ایتا -->
+                        <a href="https://eitaa.com/sabetsoft" target="_blank" rel="noopener" class="social-icon-link ita-icon" title="ایتا">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/></svg>
+                        </a>
+                        <!-- لینکدین -->
+                        <a href="https://www.linkedin.com/in/asabetghadam" target="_blank" rel="noopener" class="social-icon-link linkedin-icon" title="لینکدین">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <!-- گیت‌هاب -->
+                        <a href="https://github.com/sabetghadam" target="_blank" rel="noopener" class="social-icon-link github-icon" title="گیت‌هاب">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                        <!-- یوتیوب -->
+                        <a href="https://youtube.com/@sabetsoft" target="_blank" rel="noopener" class="social-icon-link youtube-icon" title="یوتیوب">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- نمایش ایمیل (سمت چپ در دسکتاپ) -->
+        <div class="header-right">
+            <span class="email-display" id="emailDisplay">sabetsoft@gmail.com</span>
+            <div id="copyToast" style="font-size:0.7rem;color:var(--green);margin-top:4px;opacity:0;transition:opacity 0.3s;">کپی شد!</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- ──────────── تخصص‌های اصلی ──────────── -->
+    <div class="section">
+        <div class="section-title">تخصص‌های اصلی</div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>بلاک‌چین و قراردادهای هوشمند</h3>
+                <p>Solidity · Hardhat · Foundry · Web3.js · Ethers.js · ERC-20/721/404/1155 · DEX · استیکینگ · Polygon · Tron</p>
+            </div>
+            <div class="skill-category">
+                <h3>معماری نرم‌افزار</h3>
+                <p>Microservices · Event-Driven · CQRS · Modular Monolith · UML · طراحی سیستم · رهبری فنی</p>
+            </div>
+            <div class="skill-category">
+                <h3>مهندسی فرانت‌اند</h3>
+                <p>React 19 · Next.js · Vite · TypeScript · Angular · Vue 3 · React Native · Expo</p>
+            </div>
+            <div class="skill-category">
+                <h3>مهندسی بک‌اند</h3>
+                <p>Node.js · NET Core. · Python · Laravel · Express · Fastify · WebSocket · REST</p>
+            </div>
+            <div class="skill-category">
+                <h3>سیستم‌های معاملاتی و مالی</h3>
+                <p>موتورهای آربیتراژ · Market Making · اجرای سیگنال · Elliott Wave · HFT · تأخیر زیر ۱۰۰ms</p>
+            </div>
+            <div class="skill-category">
+                <h3>پایگاه داده</h3>
+                <p>SQL Server · MongoDB · MySQL · Query Tuning · Sharding · Migration</p>
+            </div>
+            <div class="skill-category">
+                <h3>DevOps و کلود</h3>
+                <p>Docker · GitHub Actions · Vercel · Nginx · CI/CD · Cloud Deployment</p>
+            </div>
+            <div class="skill-category">
+                <h3>سیستم‌های سطح پایین</h3>
+                <p>Linux · eBPF · Assembly · Kernel Tracing · Performance Profiling</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ──────────── خدمات ──────────── -->
+    <div class="section">
+        <div class="section-title">خدماتی که ارائه می‌دهم</div>
+        <div class="services-grid">
+            <div class="service-card"><div class="service-icon">🏗️</div><h3>مشاوره معماری نرم‌افزار</h3><p>طراحی معماری برای سیستم‌های پیچیده، انتخاب تکنولوژی، بهبود مقیاس‌پذیری و کاهش بدهی فنی.</p></div>
+            <div class="service-card"><div class="service-icon">🔗</div><h3>توسعه بلاک‌چین و قرارداد هوشمند</h3><p>طراحی و پیاده‌سازی DEX، استیکینگ، توکن‌های سفارشی، و dApp کامل از سالیدیتی تا فرانت‌اند.</p></div>
+            <div class="service-card"><div class="service-icon">📈</div><h3>سیستم‌های معاملاتی و مالی</h3><p>ربات‌های آربیتراژ، Market Making، اجرای سیگنال و سیستم‌های HFT با تأخیر زیر ۱۰۰ میلی‌ثانیه.</p></div>
+            <div class="service-card"><div class="service-icon">💻</div><h3>توسعه فول‌استک</h3><p>ساخت کامل محصول از فرانت‌اند تا بک‌اند و پایگاه داده با بهترین تکنولوژی‌های روز.</p></div>
+            <div class="service-card"><div class="service-icon">🎯</div><h3>رهبری فنی و مدیریت تیم</h3><p>مدیریت تیم‌های فنی، ترجمه نیازمندی‌های کسب‌وکار به معماری فنی.</p></div>
+            <div class="service-card"><div class="service-icon">🔍</div><h3>Audit و بررسی امنیت قرارداد هوشمند</h3><p>بررسی امنیتی قراردادهای سالیدیتی، بهینه‌سازی گس، و تست نفوذ پیش از دیپلوی.</p></div>
+        </div>
+    </div>
+
+    <!-- ──────────── بلاک‌چین ──────────── -->
+    <div class="section">
+        <div class="section-title">بلاک‌چین و قراردادهای هوشمند ★</div>
+        <blockquote>این یک مهارت جانبی نیست. این کار اصلی من در سال‌های اخیر بوده — از سالیدیتی تا تحویل کامل dApp.</blockquote>
+        <div class="table-wrapper">
+        <table>
+            <thead><tr><th>پروژه</th><th>شبکه</th><th>استک فناوری</th><th>وضعیت</th></tr></thead>
+            <tbody>
+                <tr><td>صرافی غیرمتمرکز + استیکینگ</td><td>Polygon</td><td>Solidity · Hardhat · React · Web3.js</td><td><span class="badge badge-live">دیپلوی شده</span></td></tr>
+                <tr><td>پلتفرم استیکینگ</td><td>Ethereum</td><td>Solidity · Node.js · React</td><td><span class="badge badge-live">دیپلوی شده</span></td></tr>
+                <tr><td>ERC404 — NFT کسری</td><td>Ethereum</td><td>Solidity · Hardhat · React</td><td><span class="badge badge-progress">۹۰٪</span></td></tr>
+                <tr><td>MLM DApp (Tronex)</td><td>Tron</td><td>Solidity · TRC-20 · TronWeb · React</td><td><span class="badge badge-live">دیپلوی شده</span></td></tr>
+                <tr><td>MLM DApp (MyDollar)</td><td>Tron</td><td>Solidity · Node.js · React</td><td><span class="badge badge-live">دیپلوی شده</span></td></tr>
+                <tr><td>AIConnective — پل AI و بلاک‌چین <a href="https://app.aiconnective.tech" class="project-link">↗</a></td><td>Ethereum</td><td>Web3.js · Python · Node.js · React</td><td><span class="badge badge-live">دیپلوی شده</span></td></tr>
+            </tbody>
+        </table>
+        </div>
+        <br>
+        <div class="section-title" style="font-size:0.85rem; border-bottom:1px solid var(--border);">توسعه امنیت-محور</div>
+        <div class="code-block">
+<span class="comment">// هر قراردادی که می‌نویسم شامل این موارد است:</span>
+<span class="keyword">├──</span> محافظت Re-entrancy      <span class="comment">→ الگوی CEI + OpenZeppelin</span>
+<span class="keyword">├──</span> امنیت اعداد صحیح         <span class="comment">→ Solidity ^0.8.x</span>
+<span class="keyword">├──</span> کنترل دسترسی             <span class="comment">→ مبتنی بر نقش + آماده Multi-Sig</span>
+<span class="keyword">├──</span> بهینه‌سازی گس            <span class="comment">→ فشرده‌سازی Storage، calldata</span>
+<span class="keyword">├──</span> پوشش تست ۹۵٪+            <span class="comment">→ Hardhat + Foundry + Fork Tests</span>
+<span class="keyword">└──</span> مستندات NatSpec          <span class="comment">→ مستندات کامل توسعه‌دهنده</span>
+        </div>
+        <br>
+        <div class="table-wrapper">
+        <table class="compare-table">
+            <thead><tr><th>توسعه‌دهنده معمولی بلاک‌چین</th><th>من</th></tr></thead>
+            <tbody>
+                <tr><td>کپی کردن قراردادهای OpenZeppelin</td><td>درک ریاضیات — شخصی‌سازی می‌کنم</td></tr>
+                <tr><td>تست فقط مسیر خوش‌بینانه</td><td>Fuzz tests · Fork tests · حالت‌های مرزی</td></tr>
+                <tr><td>نادیده گرفتن مصرف گس</td><td>بهینه‌سازی گس از خط اول</td></tr>
+                <tr><td>فقط فرانت‌اند یا فقط قرارداد</td><td>dApp کامل — قرارداد + بک‌اند + فرانت‌اند</td></tr>
+                <tr><td>تک‌شبکه</td><td>Ethereum · Polygon · Tron · BSC</td></tr>
+                <tr><td>بدون تجربه Production</td><td>۶+ پروژه دیپلوی‌شده با کاربران واقعی</td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- ──────────── معماری ──────────── -->
+    <div class="section">
+        <div class="section-title">معماری نرم‌افزار</div>
+        <div class="table-wrapper">
+        <table>
+            <thead><tr><th>الگو</th><th>پروژه</th><th>نتیجه</th></tr></thead>
+            <tbody>
+                <tr><td>Event-Driven + Outbox</td><td>Arbify.site</td><td>صفر double-spend، ۵۰۰+ کاربر همزمان</td></tr>
+                <tr><td>Microservices + Gateway</td><td>EcomSys</td><td>۹۹.۹٪ آپتایم، ۳۰ سرویس</td></tr>
+                <tr><td>هیبریدی AI ↔ Blockchain</td><td>AIConnective</td><td>مقیاس‌پذیری مستقل برای هر لایه</td></tr>
+                <tr><td>Modular Monolith</td><td>BitBix.io</td><td>ماژول‌های قابل تعویض، بدون قطعی</td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- ──────────── سیستم‌های معاملاتی ──────────── -->
+    <div class="section">
+        <div class="section-title">سیستم‌های معاملاتی پرسرعت</div>
+        <blockquote>جایی که میلی‌ثانیه معنی پول می‌دهد. ۲۰۱۸ تا امروز.</blockquote>
+        <div class="table-wrapper">
+        <table>
+            <thead><tr><th>سیستم</th><th>سال</th><th>استک</th><th>وضعیت</th></tr></thead>
+            <tbody>
+                <tr><td>Arbify.site — آربیتراژ چندصرافی <a href="https://arbify.site" class="project-link">↗</a></td><td>۲۰۲۳</td><td>Node.js · MongoDB · HMAC-SHA512</td><td><span class="badge badge-live">فعال</span></td></tr>
+                <tr><td>اجرای سیگنال TradingView</td><td>۲۰۲۵</td><td>Node.js · WebSocket</td><td><span class="badge badge-done">تکمیل</span></td></tr>
+                <tr><td>موتور آربیتراژ CEX</td><td>۲۰۲۵</td><td>Node.js · Python · WebSocket</td><td><span class="badge badge-progress">۶۰٪</span></td></tr>
+                <tr><td>تشخیص الگوی Elliott Wave</td><td>۲۰۲۰</td><td>C# · پردازش سیگنال دیجیتال</td><td><span class="badge badge-done">تکمیل</span></td></tr>
+                <tr><td>HummingBot Market Making</td><td>۲۰۲۵</td><td>Python · استراتژی‌های سفارشی</td><td><span class="badge badge-live">دیپلوی شده</span></td></tr>
+                <tr><td>BitMax Arbitrage Bot</td><td>۲۰۱۹</td><td>C# · WinForms</td><td><span class="badge badge-done">تکمیل</span></td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- ──────────── فول‌استک ──────────── -->
+    <div class="section">
+        <div class="section-title">مهندسی فول‌استک</div>
+        <div class="table-wrapper">
+        <table>
+            <thead><tr><th>لایه</th><th>پروژه‌ها</th><th>فناوری‌های کلیدی</th></tr></thead>
+            <tbody>
+                <tr><td>فرانت‌اند</td><td>Coinatik · EcomSys · AIConnective · Probin</td><td>React 19 · Vite · Next.js · Angular · Vue 3</td></tr>
+                <tr><td>بک‌اند</td><td>Arbify · BetUtility · BitBix · EcomSys</td><td>Node.js · NET Core. · Python · Laravel</td></tr>
+                <tr><td>موبایل</td><td>Probin · Jandro · ردیابی راننده</td><td>React Native · Expo · Xamarin · Android Native</td></tr>
+                <tr><td>پایگاه داده</td><td>SQL Server → MongoDB Migration</td><td>Query Tuning · Sharding · Replication</td></tr>
+                <tr><td>DevOps</td><td>تمامی پروژه‌ها</td><td>Docker · GitHub Actions · Vercel · CI/CD</td></tr>
+                <tr><td>سطح پایین</td><td>دیباگ ربات معاملاتی</td><td>Linux · eBPF · Assembly · Kernel Tracing</td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- ──────────── سایر پروژه‌ها ──────────── -->
+    <div class="section">
+        <div class="section-title">سایر پروژه‌های شاخص</div>
+        <div class="table-wrapper">
+        <table>
+            <thead><tr><th>پروژه</th><th>سال</th><th>استک</th><th>توضیح</th></tr></thead>
+            <tbody>
+                <tr><td>Coinatik.com <a href="https://coinatik.com" class="project-link">↗</a></td><td>۲۰۱۸</td><td>ASP.NET MVC · AngularJS · SQL Server</td><td>صرافی ارز دیجیتال P2P</td></tr>
+                <tr><td>BitBix.io <a href="https://bitbix.io" class="project-link">↗</a></td><td>۲۰۱۷</td><td>ASP.NET MVC · AngularJS · NET Core.</td><td>پلتفرم بازی با تراکنش‌های ارز دیجیتال</td></tr>
+                <tr><td>BetUtility</td><td>۲۰۲۲</td><td>Node.js · Python · Scraping</td><td>موتور استخراج داده با ۱۰۰K+ رکورد در روز</td></tr>
+                <tr><td>EcomSys <a href="https://front.ecomsys.ir" class="project-link">↗</a></td><td>۲۰۲۳+</td><td>Angular · NET Core. · Node.js · MongoDB</td><td>پلتفرم فول‌استک تجارت الکترونیک</td></tr>
+                <tr><td>Probin <a href="https://probinpapendrecht.nl" class="project-link">↗</a></td><td>۲۰۱۶</td><td>Xamarin · ASP.NET MVC</td><td>اپ موبایل تجارت الکترونیک هلند</td></tr>
+                <tr><td>Jandro Mobile App</td><td>۲۰۱۶</td><td>Android Java · ASP.NET</td><td>اپ خرید فروشگاهی</td></tr>
+                <tr><td>سیستم ردیابی راننده</td><td>۲۰۱۲</td><td>Android 2.1 · ASP.NET WebForms · GPS</td><td>ردیابی راننده با نقشه گوگل</td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- ──────────── پروژه‌های تاریخی ──────────── -->
+    <div class="section">
+        <div class="section-title">پروژه‌های تاریخی و Legacy</div>
+        <div class="table-wrapper">
+        <table>
+            <thead><tr><th>دوره</th><th>پروژه/مهارت</th><th>تکنولوژی</th></tr></thead>
+            <tbody>
+                <tr><td>۲۰۰۲+</td><td>توسعه بازی و طراحی موتور بازی</td><td>DirectX · C++ · C</td></tr>
+                <tr><td>۲۰۰۵+</td><td>طراحی سیستم‌های سازمانی</td><td>UML · Rational Rose · SQL Server 2000</td></tr>
+                <tr><td>۲۰۱۰+</td><td>سیستم‌های تحت DOS</td><td>DOS-based SQL · Assembly x86</td></tr>
+                <tr><td>۲۰۱۴+</td><td>پروژه‌های Unity 3D</td><td>Unity · C# · Game Design</td></tr>
+                <tr><td>۲۰۱۵+</td><td>کرنل لینوکس و eBPF</td><td>Linux Kernel · eBPF · System Tracing</td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!-- ──────────── رهبری فنی ──────────── -->
+    <div class="section">
+        <div class="section-title">رهبری فنی و مدیریت کسب‌وکار</div>
+        <blockquote>تکنولوژی هدف نیست — وسیله‌ای است برای حل مسئله کسب‌وکار.</blockquote>
+        <div class="skills-grid">
+            <div class="skill-category"><h3>مدیریت تیم</h3><p>هدایت تیم‌های فنی ۳ تا ۱۵ نفره در پروژه‌های پیچیده</p></div>
+            <div class="skill-category"><h3>ترجمه نیازمندی</h3><p>تبدیل نیازمندی‌های کسب‌وکار به معماری فنی قابل اجرا</p></div>
+            <div class="skill-category"><h3>تصمیم‌گیری فنی</h3><p>تحلیل Make vs. Buy و انتخاب تکنولوژی بر اساس نیاز واقعی</p></div>
+            <div class="skill-category"><h3>مدیریت بدهی فنی</h3><p>اولویت‌بندی Feature vs. Stability و مدیریت بلندمدت کد</p></div>
+        </div>
+    </div>
+
+    <!-- ──────────── CTA ──────────── -->
+    <div class="cta-section">
+        <div class="availability">
+            <span class="availability-dot"></span>
+            آماده پذیرش پروژه و مشاوره
+        </div>
+        <h2>پروژه‌ای در ذهن داری؟</h2>
+        <p>برای مشاوره رایگان، ثبت سفارش یا همکاری در پروژه‌های بلاک‌چین، معماری و توسعه نرم‌افزار در ارتباط باش.</p>
+        <div class="cta-buttons">
+            <a href="mailto:sabetsoft@gmail.com?subject=مشاوره%20و%20همکاری" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                درخواست مشاوره یا سفارش
+            </a>
+            <a href="https://t.me/sabetsoft_dev" class="btn btn-telegram" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.015-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.145.118.185.276.208.542z"/></svg>
+                گفتگو در تلگرام
+            </a>
+            <a href="https://eitaa.com/sabetsoft" class="btn btn-ita" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/></svg>
+                گفتگو در ایتا
+            </a>
+            <a href="https://www.linkedin.com/in/asabetghadam/" class="btn btn-linkedin" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+            </a>
+            <a href="https://youtube.com/@sabetsoft" class="btn btn-youtube" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                YouTube
+            </a>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        بیشتر کدهای منبع به دلیل محرمانگی مشتریان خصوصی است. این صفحه شامل یادداشت‌های معماری و خلاصه پروژه‌ها می‌باشد.<br>
+        © عباس ثابت‌قدم — sabetsoft@gmail.com
+    </div>
+
+</div>
+
+<script>
+    function copyEmail() {
+        navigator.clipboard.writeText('sabetsoft@gmail.com').then(function() {
+            var toast = document.getElementById('copyToast');
+            toast.style.opacity = '1';
+            setTimeout(function() {
+                toast.style.opacity = '0';
+            }, 1500);
+        });
+    }
+
+    function openHireModal() {
+        document.getElementById('hireModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeHireModal() {
+        document.getElementById('hireModal').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    document.getElementById('hireModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeHireModal();
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeHireModal();
+        }
+    });
+</script>
+
+</body>
+</html>

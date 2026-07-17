@@ -35,7 +35,7 @@
 | Project | Description | Stack |
 |---------|-------------|-------|
 | **[Arbify.site](https://arbify.site)** | Multi-exchange arbitrage platform with real-time price updates | React, Node.js, WebSocket, MongoDB |
-| **[ECOMSYS](https://front.ecomsys.ir)** | Multi-language, multi-currency e-commerce platform | Angular 19, .NET Core, SQL Server |
+| **[ECOMSYS](https://demo.ecomsys.online)** | Multi-language, multi-currency e-commerce platform | Angular 19, .NET Core, SQL Server |
 | **[AIConnective](https://app.aiconnective.tech)** | AI-Blockchain bridge with real-time inference | React 19, Next.js, Python, Web3.js |
 | **Private DEX + Staking** | Decentralized exchange with staking on Polygon | Solidity, Hardhat, React, Web3.js |
 

@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Software Architect — Abbas Sabetghadam</title>
+    <meta name="description"
+        content="Software Architect and Lead Full-Stack Engineer with 25+ years of experience. Specializing in scalable architectures, trading systems, .NET Core, Angular, and real-time data pipelines." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet" />
+    <style>
+        /* ─── Reset & Base ─── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #111;
+            --accent: #1565c0;
+            --accent-hover: #0d47a1;
+            --bg: #fafafa;
+            --card: #fff;
+            --border: #e0e0e0;
+            --text: #1a1a1a;
+            --muted: #666;
+            --green: #2e7d32;
+            --orange: #e65100;
+            --blue: #1565c0;
+            --hire: #ff5722;
+            --hire-hover: #e64a19;
+            --hire-glow: rgba(255, 87, 34, 0.4);
+            --icon-bg: #f0f4ff;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            padding: 60px 30px;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        /* ─── Floating Hire Button ─── */
+        .floating-hire {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 999;
+        }
+
+        .hire-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 28px;
+            background: var(--hire);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 8px 30px var(--hire-glow);
+            transition: all 0.3s ease;
+            animation: hirePulse 2s ease-in-out infinite;
+        }
+
+        .hire-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            background: var(--hire-hover);
+        }
+
+        @keyframes hirePulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.04);
+            }
+        }
+
+        /* ─── Modal ─── */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 16px;
+            padding: 0;
+            max-width: 520px;
+            width: 90%;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-header {
+            background: var(--hire);
+            padding: 28px 28px 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .modal-header .modal-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .modal-body {
+            padding: 28px;
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .modal-option {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 20px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .modal-option:hover {
+            border-color: var(--accent);
+            background: #f8faff;
+            transform: translateX(4px);
+        }
+
+        .modal-option-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+
+        .modal-option-icon.email {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .modal-option-icon.telegram {
+            background: #e0f7fa;
+            color: #0088cc;
+        }
+
+        .modal-option-icon.linkedin {
+            background: #e8eaf6;
+            color: #0a66c2;
+        }
+
+        .modal-option-icon.github {
+            background: #f5f5f5;
+            color: #111;
+        }
+
+        .modal-option-text small {
+            display: block;
+            font-weight: 400;
+            color: var(--muted);
+            font-size: 0.8rem;
+            margin-top: 2px;
+        }
+
+        .modal-close {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: transparent;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #888;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .modal-close:hover {
+            border-color: #aaa;
+            color: #555;
+            background: #f5f5f5;
+        }
+
+        .modal-footer-note {
+            text-align: center;
+            font-size: 0.78rem;
+            color: #aaa;
+            margin-top: 16px;
+        }
+
+        /* ─── Header ─── */
+        .header {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .header-title h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .header-title .role {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #555;
+            margin-top: 2px;
+        }
+
+        .header-title .role .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ─── Social Box ─── */
+        .social-box {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 20px;
+            padding: 10px 18px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #f8f8f8;
+            width: 100%;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: #444;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .social-item:hover {
+            color: var(--accent);
+        }
+
+        .social-item .icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-item .icon svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .social-item .label {
+            font-weight: 500;
+            color: #666;
+        }
+
+        .social-item .handle {
+            color: var(--primary);
+            font-weight: 400;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.75rem;
+        }
+
+        .social-item .handle.email {
+            color: var(--accent);
+        }
+
+        .social-item:hover .handle.email {
+            text-decoration: underline;
+        }
+
+        /* ─── Breadcrumb ─── */
+        .breadcrumb {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* ─── Sections ─── */
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #333;
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title .section-icon {
+            font-size: 1.2rem;
+            background: var(--icon-bg);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        .section-title .badge-new {
+            font-size: 0.65rem;
+            text-transform: none;
+            background: var(--green);
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px;
+        }
+
+        .skill-category h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .skill-category p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .skill-category .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .skill-category .tech-tag {
+            padding: 2px 10px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .skill-category .tech-tag.primary {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .skill-category .tech-tag.new {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .skill-category .tech-tag.legacy {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px 24px;
+        }
+
+        .competencies-grid .item {
+            font-size: 0.9rem;
+            color: #444;
+            padding: 6px 0 6px 28px;
+            border-bottom: 1px solid #f5f5f5;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .competencies-grid .item .icon {
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .competencies-grid .item::before {
+            display: none;
+        }
+
+        .exp-item {
+            margin-bottom: 28px;
+            padding-left: 28px;
+            position: relative;
+            border-left: 3px solid #e0e0e0;
+            padding-left: 24px;
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-item::before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 2px solid var(--card);
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 4px 12px;
+            margin-bottom: 2px;
+        }
+
+        .exp-header h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #111;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .exp-header h3 .exp-icon {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .exp-header .year {
+            font-size: 0.85rem;
+            color: #888;
+            font-weight: 500;
+            background: #f5f5f5;
+            padding: 0 10px;
+            border-radius: 12px;
+        }
+
+        .exp-sub {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .exp-list {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .exp-list li {
+            padding: 2px 0 2px 24px;
+            position: relative;
+        }
+
+        .exp-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .project-item {
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .project-item:hover {
+            border-color: var(--accent);
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-item h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #111;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-item h3 .project-icon {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .project-item ul {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.8;
+            margin-top: 2px;
+        }
+
+        .project-item ul li {
+            padding: 1px 0 1px 24px;
+            position: relative;
+        }
+
+        .project-item ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 8px;
+        }
+
+        .table-wrapper table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            background: var(--card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .table-wrapper thead th {
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #888;
+            padding: 12px 16px;
+            background: #f8f8f8;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .table-wrapper tbody td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+            color: #444;
+        }
+
+        .table-wrapper tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-wrapper tbody td:first-child {
+            font-weight: 600;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8rem;
+            margin-left: 4px;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .badge-live {
+            background: #e8f5e9;
+            color: var(--green);
+        }
+
+        .badge-progress {
+            background: #fff3e0;
+            color: var(--orange);
+        }
+
+        .badge-done {
+            background: #e3f2fd;
+            color: var(--blue);
+        }
+
+        blockquote {
+            border-left: 3px solid #333;
+            padding: 8px 0 8px 20px;
+            margin: 24px 0;
+            color: var(--muted);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 16px 0;
+        }
+
+        .feature-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .feature-item .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-item h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 24px;
+            border-radius: 6px;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.82rem;
+            line-height: 1.8;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        .code-block .comment {
+            color: #6a9955;
+        }
+
+        .code-block .keyword {
+            color: #569cd6;
+        }
+
+        .code-block .string {
+            color: #ce9178;
+        }
+
+        .code-block .func {
+            color: #dcdcaa;
+        }
+
+        .code-block .type {
+            color: #4ec9b0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 30px;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        .info-grid strong {
+            color: #111;
+        }
+
+        .info-grid .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 6px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .info-grid .info-item .info-icon {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 2px;
+            width: 22px;
+            text-align: center;
+        }
+
+        .cta-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 36px 32px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .cta-section p {
+            color: var(--muted);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .btn-telegram {
+            background: #0088cc;
+            color: #fff;
+            border-color: #0088cc;
+        }
+
+        .btn-telegram:hover {
+            background: #006da3;
+            border-color: #006da3;
+        }
+
+        .btn-linkedin {
+            background: #0a66c2;
+            color: #fff;
+            border-color: #0a66c2;
+        }
+
+        .btn-linkedin:hover {
+            background: #084e96;
+            border-color: #084e96;
+        }
+
+        .btn-github {
+            background: #111;
+            color: #fff;
+            border-color: #111;
+        }
+
+        .btn-github:hover {
+            background: #333;
+            border-color: #333;
+        }
+
+        .availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        .availability-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .footer-note {
+            margin-top: 80px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: #999;
+            text-align: center;
+        }
+
+        .inline-code {
+            background: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.85rem;
+            color: #d63384;
+        }
+
+        .legacy-note {
+            background: #fff3e0;
+            border-radius: 8px;
+            padding: 16px 20px;
+            border-right: 4px solid #e65100;
+            margin-top: 16px;
+        }
+
+        .legacy-note p {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0;
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .header-top {
+                flex-wrap: wrap;
+            }
+
+            .header-title h1 {
+                font-size: 1.5rem;
+            }
+
+            .social-box {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+                padding: 10px 14px;
+            }
+
+            .social-item {
+                font-size: 0.75rem;
+            }
+
+            .social-item .handle {
+                font-size: 0.7rem;
+            }
+
+            .competencies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-grid,
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+
+            .floating-hire {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .hire-btn {
+                padding: 14px 22px;
+                font-size: 0.9rem;
+            }
+
+            .modal {
+                width: 95%;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+
+            .modal-option {
+                padding: 14px 16px;
+            }
+
+            .exp-item {
+                padding-left: 16px;
+            }
+
+            .exp-item::before {
+                left: -6px;
+                width: 10px;
+                height: 10px;
+            }
+
+            .table-wrapper tbody td:first-child {
+                white-space: normal;
+            }
+
+            .legacy-note {
+                padding: 12px 16px;
+            }
+
+            .legacy-note p {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ─── Floating Hire Button ─── -->
+    <div class="floating-hire">
+        <button class="hire-btn" onclick="openHireModal()">HIRE ME</button>
+    </div>
+
+    <!-- ─── Hire Modal ─── -->
+    <div class="modal-overlay" id="hireModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Let's Build Together 🚀</h2>
+                <div class="modal-subtitle">Choose how you'd like to connect</div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-options">
+                    <a href="mailto:sabetsoft@gmail.com?subject=Architecture%20Project%20Inquiry" class="modal-option">
+                        <div class="modal-option-icon email">✉️</div>
+                        <div class="modal-option-text">
+                            Send an Email
+                            <small>sabetsoft@gmail.com</small>
+                        </div>
+                    </a>
+                    <a href="https://t.me/sabetsoft_dev" target="_blank" rel="noopener" class="modal-option">
+                        <div class="modal-option-icon telegram">💬</div>
+                        <div class="modal-option-text">
+                            Chat on Telegram
+                            <small>@sabetsoft_dev</small>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/asabetghadam" target="_blank" rel="noopener"
+                        class="modal-option">
+                        <div class="modal-option-icon linkedin">🔗</div>
+                        <div class="modal-option-text">
+                            Connect on LinkedIn
+                            <small>Professional profile</small>
+                        </div>
+                    </a>
+                    <a href="https://github.com/sabetghadam" target="_blank" rel="noopener" class="modal-option">
+                        <div class="modal-option-icon github">🐙</div>
+                        <div class="modal-option-text">
+                            View GitHub
+                            <small>Open source &amp; project samples</small>
+                        </div>
+                    </a>
+                </div>
+                <button class="modal-close" onclick="closeHireModal()">Maybe Later</button>
+                <div class="modal-footer-note">Typically respond within a few hours</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- ─── HEADER ─── -->
+        <div class="header">
+
+            <div class="header-top">
+                <img src="https://avatars.githubusercontent.com/u/6519453?s=96&v=4" alt="Abbas Sabetghadam"
+                    class="profile-pic" />
+                <div class="header-title">
+                    <h1>Abbas Sabetghadam</h1>
+                    <div class="role">
+                        Software Architect &amp; Lead Full-Stack Engineer —
+                        <span class="highlight">25+ Years of Experience</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-box">
+
+                <a href="mailto:sabetsoft@gmail.com" class="social-item">
+                    <span class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </span>
+                    <span class="label">Email</span>
+                    <span class="handle email">sabetsoft@gmail.com</span>
+                </a>
+
+                <a href="https://t.me/sabetsoft_dev" target="_blank" rel="noopener" class="social-item">
+                    <span class="icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.015-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.145.118.185.276.208.542z" />
+                        </svg>
+                    </span>
+                    <span class="handle">@sabetsoft_dev</span>
+                </a>
+
+                <a href="https://www.linkedin.com/in/asabetghadam" target="_blank" rel="noopener" class="social-item">
+                    <span class="icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </span>
+                    <span class="handle">in/asabetghadam</span>
+                </a>
+
+                <a href="https://github.com/sabetghadam" target="_blank" rel="noopener" class="social-item">
+                    <span class="icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </span>
+                    <span class="handle">sabetghadam</span>
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- ─── BREADCRUMB ─── -->
+        <div class="breadcrumb">
+            <a href="index.html">← Back to Home</a> / Software Architect
+        </div>
+
+        <!-- ─── PROFESSIONAL SUMMARY ─── -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">📋</span>
+                Professional Summary
+            </div>
+            <div class="summary-text" style="font-size:0.92rem; color:#444; line-height:1.9; text-align:justify;">
+                Senior Software Architect and Technical Lead with over <strong>25 years</strong> of experience architecting
+                and delivering complex, high-performance systems. Proven expertise in translating ambiguous business
+                requirements into scalable architectures for trading platforms, financial data pipelines, and
+                enterprise-grade applications.
+                Specializes in full-stack development (<strong>.NET Core, Angular, Python</strong>) with deep focus on
+                low-latency, event-driven, and data-intensive systems. Passionate about building solutions that empower
+                investment teams through accurate, real-time data and intuitive interfaces.
+            </div>
+        </div>
+
+        <!-- ─── CORE COMPETENCIES ─── -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">⚡</span>
+                Core Competencies
+            </div>
+            <div class="competencies-grid">
+                <div class="item"><span class="icon">🏗️</span> Software Architecture &amp; System Design</div>
+                <div class="item"><span class="icon">🔄</span> Full-Stack Development (.NET Core, Angular, Python, Node.js)</div>
+                <div class="item"><span class="icon">📨</span> Event-Driven &amp; Microservices Architecture</div>
+                <div class="item"><span class="icon">📈</span> Trading &amp; Financial Systems</div>
+                <div class="item"><span class="icon">🧩</span> Plugin-Based Architecture &amp; Extensible Systems</div>
+                <div class="item"><span class="icon">⚡</span> Real-Time Data Processing &amp; Streaming</div>
+                <div class="item"><span class="icon">🌐</span> Web Scraping &amp; Data Aggregation</div>
+                <div class="item"><span class="icon">🗄️</span> Data Modeling &amp; Performance Tuning (SQL, NoSQL)</div>
+                <div class="item"><span class="icon">🔗</span> API Design &amp; Integration (REST, GraphQL, WebSocket)</div>
+                <div class="item"><span class="icon">📐</span> Enterprise Architecture &amp; System Modeling (UML, Rational Rose)</div>
+                <div class="item"><span class="icon">☁️</span> CI/CD, Docker, Cloud (Azure)</div>
+                <div class="item"><span class="icon">👥</span> Technical Leadership &amp; Requirements Translation</div>
+                <div class="item"><span class="icon">💻</span> Low-Level Systems &amp; OS Development</div>
+                <div class="item"><span class="icon">⛓️</span> Blockchain &amp; Smart Contracts</div>
+                <div class="item"><span class="icon">📱</span> Desktop &amp; Mobile Development (WinForms, Xamarin, Android)</div>
+                <div class="item"><span class="icon">🤝</span> P2P Exchange Systems &amp; Escrow Solutions</div>
+            </div>
+        </div>
+
+        <!-- ─── TECHNICAL SKILLS ─── -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">🛠️</span>
+                Technical Skills
+            </div>
+            <div class="skill-grid">
+                <div class="skill-category">
+                    <h3>Backend <span class="badge-new">core</span></h3>
+                    <p>.NET Core / C#, Node.js, Python, ASP.NET MVC/WebForms, PHP, Microservices, CQRS</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Frontend <span class="badge-new">modern</span></h3>
+                    <p>Angular, React, Vue.js, TypeScript, WebSocket, SignalR</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Mobile &amp; Desktop <span class="badge-new">cross</span></h3>
+                    <p>Xamarin, Xamarin.Forms, Android Native, WinForms, WPF</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Database <span class="badge-new">data</span></h3>
+                    <p>SQL Server, MongoDB, MySQL, Sharding, Query Optimization</p>
+                </div>
+                <div class="skill-category">
+                    <h3>DevOps &amp; Cloud <span class="badge-new">ops</span></h3>
+                    <p>Docker, CI/CD, GitHub Actions, Azure, Nginx</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Architecture &amp; Modeling <span class="badge-new">design</span></h3>
+                    <p>UML 1.4/2.0, Rational Rose, Enterprise Architecture</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Blockchain <span class="badge-new">web3</span></h3>
+                    <p>Solidity, Hardhat, Web3.js, Ethers.js, ERC-20/721/404/1155, DEX, Staking</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Low-Level <span class="badge-new">system</span></h3>
+                    <p>Assembly x86, C, Linux, eBPF, OS Development, Kernel</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Quality Assurance <span class="badge-new">qa</span></h3>
+                    <p>Unit Testing, Integration Testing, Test Automation, Performance Testing, QA Processes</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── PROFESSIONAL EXPERIENCE ─── -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">💼</span>
+                Professional Experience
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <h3><span class="exp-icon">🏢</span> Managing Director &amp; Lead Software Architect</h3>
+                    <span class="year">2004 – 2015</span>
+                </div>
+                <div class="exp-sub">Sabet Rayaneh Hormozgan — Founder &amp; Technical Lead</div>
+                <ul class="exp-list">
+                    <li><strong>Founded and managed the company</strong> — led all technical and business operations as Managing Director and Chief Software Architect.</li>
+                    <li><strong>Designed and delivered enterprise-grade software solutions</strong> for government and corporate clients across various industries.</li>
+                    <li><strong>Built and led a team of 4–10 developers</strong>, overseeing architecture design, code quality, and project delivery.</li>
+                    <li><strong>Architected custom CMS, real estate platforms, and enterprise systems</strong> — including ActivePage, Kotook, and municipal websites.</li>
+                    <li><strong>Drove business growth</strong> by combining technical leadership with strategic decision-making — translating client needs into scalable, maintainable software.</li>
+                    <li><strong>Hands-on architect and developer</strong> — balancing management responsibilities with active coding and system design.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <h3><span class="exp-icon">🧑‍💻</span> Software Architect &amp; Lead Developer</h3>
+                    <span class="year">2018 – Present</span>
+                </div>
+                <div class="exp-sub">Coinatik · Arbify.site · AIConnective · Private DEX</div>
+                <ul class="exp-list">
+                    <li><strong>Coinatik (2018):</strong> Full crypto exchange with P2P trading, real-time chat, multi-currency wallet &amp; escrow — ASP.NET MVC, AngularJS, SQL Server, WebSocket.</li>
+                    <li><strong>Arbify.site (2023):</strong> Multi-exchange arbitrage — event-driven + outbox, 500+ concurrent users, sub-100ms latency — Node.js, MongoDB, WebSocket.</li>
+                    <li><strong>AIConnective (2024):</strong> AI-blockchain analytics platform — Python (LangChain, PyTorch), React, Web3.js, Ethereum.</li>
+                    <li>Smart contracts: Solidity · DEX · Staking · ERC-20/721/404/1155 · Polygon · Tron.</li>
+                    <li>Led teams of 3–6 engineers · CI/CD · Cloud deployment · Production support.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <h3><span class="exp-icon">✈️</span> Freelance Software Engineer</h3>
+                    <span class="year">2016</span>
+                </div>
+                <div class="exp-sub">Probin · Kabby · Jandro · Scraper</div>
+                <ul class="exp-list">
+                    <li><strong>Probin (Netherlands):</strong> Cross-platform mobile app (Android &amp; iOS) — Xamarin (C#).</li>
+                    <li><strong>Kabby (Pakistan):</strong> Taxi application — Xamarin.Forms.</li>
+                    <li><strong>Jandro:</strong> Full-stack: ASP.NET MVC web portal + Android native service for remote call logging/monitoring.</li>
+                    <li><strong>Scraper (2016–2017):</strong> Commercial scraping platform — plugin-based architecture, 4 rendering engines (Gecko, Trident, CEFSharp, WebKit).</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <h3><span class="exp-icon">🎓</span> Noore Danesh Institute — Custom Web System</h3>
+                    <span class="year">2005 – 2006</span>
+                </div>
+                <ul class="exp-list">
+                    <li>Selected among candidates with advanced degrees from top universities based on ActivePage.</li>
+                    <li><strong>ActivePage:</strong> OOP CMS framework — parameter-driven, admin panel, any data format, any website type.</li>
+                    <li>Secure faculty data access system — IP restrictions, role-based control — C#, ASP.NET WebForms, SQL Server.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <h3><span class="exp-icon">🏛️</span> Senior Developer &amp; Technical Lead</h3>
+                    <span class="year">2004 – 2015</span>
+                </div>
+                <div class="exp-sub">Enterprise &amp; Government Projects</div>
+                <ul class="exp-list">
+                    <li><strong>Early Leadership:</strong> Led team of 4 developers (Sarakhon &amp; Qeshm Gas Company) — C#, ASP.NET WebForms.</li>
+                    <li><strong>Municipal Website (2005):</strong> High-traffic site — IE6, limited hosting, SQL Server 2000.</li>
+                    <li><strong>Kotook (2005–2006):</strong> Iran's first parametric real estate search engine.</li>
+                    <li><strong>ActivePage (2005–2016):</strong> 11-year evolution — source code still available.</li>
+                    <li>UML 1.4/2.0 · Rational Rose · Enterprise architecture modeling.</li>
+                    <li><strong>OS Development (2013–2014):</strong> Custom kernel — Bootloader, GDT, IDT, Mouse Driver, VGA Graphics, Window Manager — Assembly x86, C, GCC.</li>
+                    <li>Led teams of up to 10 engineers · Full SDLC · Mobile (Android, Xamarin).</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- ─── KEY PROJECTS ─── -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">🚀</span>
+                Key Projects
+            </div>
+
+            <div class="project-item">
+                <h3><span class="project-icon">⛓️</span> Unilab – DEX, Token &amp; Miner on Polygon (2022)</h3>
+                <ul>
+                    <li><strong>Platform:</strong> Polygon Network — Decentralized Exchange (DEX) with custom token and mining mechanism.</li>
+                    <li><strong>Stack:</strong> Solidity, Hardhat, Web3.js, React, Polygon.</li>
+                    <li><strong>Features:</strong> Custom token with mining rewards, liquidity pools, and staking.</li>
+                    <li><strong>Innovation:</strong> Designed and deployed a complete DeFi ecosystem on Polygon.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h3><span class="project-icon">📊</span> Arbify.site – Multi-Exchange Arbitrage</h3>
+                <ul>
+                    <li><strong>Architecture:</strong> Event-Driven + Outbox — zero data loss, prevented double-spend.</li>
+                    <li><strong>Stack:</strong> Node.js, MongoDB, WebSocket — 500+ concurrent users, sub-100ms latency.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h3><span class="project-icon">💰</span> Coinatik – Crypto Exchange</h3>
+                <ul>
+                    <li><strong>Features:</strong> P2P Exchange, Real-Time Chat (WebSocket), Multi-Currency Wallet, Escrow.</li>
+                    <li><strong>Stack:</strong> ASP.NET MVC, AngularJS, SQL Server.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h3><span class="project-icon">🔍</span> BetUtility &amp; Scraper – Real-Time Scraping</h3>
+                <ul>
+                    <li><strong>Architecture:</strong> Multi-Engine Plugin-Based System — dynamic assembly loading.</li>
+                    <li><strong>Engines:</strong> Gecko, Trident, CEFSharp, WebKit.</li>
+                    <li><strong>Innovation:</strong> Proprietary plugin system from scratch — monetized.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h3><span class="project-icon">📄</span> ActivePage – OOP CMS Framework</h3>
+                <ul>
+                    <li><strong>Domain:</strong> activepage.ir — 11 years evolution (2005–2016).</li>
+                    <li><strong>Career Milestone:</strong> Presented to Professor Farmanesh → selected among top university graduates.</li>
+                    <li><strong>Features:</strong> Any data format, flexible parameters, admin panel — precursor to NoSQL/JSON.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h3><span class="project-icon">🖥️</span> Custom OS Kernel</h3>
+                <ul>
+                    <li><strong>Architecture:</strong> Custom kernel from scratch — self-taught (2013–2014).</li>
+                    <li><strong>Stack:</strong> Assembly x86, C, GCC, QEMU, VMWare.</li>
+                    <li><strong>Features:</strong> Bootloader, GDT, IDT, Memory Management, Mouse Driver, VGA Graphics, Window Manager.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- ─── HISTORICAL & LEGACY PROJECTS ─── -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">⏳</span>
+                Historical &amp; Legacy Projects
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Period</th>
+                            <th>Project / Skill</th>
+                            <th>Technology</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2002+</td>
+                            <td>Game Development &amp; Engine Design</td>
+                            <td>DirectX · C++ · C</td>
+                        </tr>
+                        <tr>
+                            <td>2003</td>
+                            <td>First Website (Corporate)</td>
+                            <td>ASP.NET WebForms · SQL Server · Photoshop UI</td>
+                        </tr>
+                        <tr>
+                            <td>2003</td>
+                            <td>Hormozgan Electric Distribution Company</td>
+                            <td>PHP · MySQL · Corporate Portal</td>
+                        </tr>
+                        <tr>
+                            <td>2005+</td>
+                            <td>Enterprise System Design</td>
+                            <td>UML · Rational Rose · SQL Server 2000</td>
+                        </tr>
+                        <tr>
+                            <td>2010+</td>
+                            <td>OS &amp; Kernel Development — Personal OS with mouse &amp; graphics drivers</td>
+                            <td>Assembly x86 · C · Hardware Interfacing</td>
+                        </tr>
+                        <tr>
+                            <td>2014+</td>
+                            <td>Unity 3D Projects</td>
+                            <td>Unity · C# · Game Design</td>
+                        </tr>
+                        <tr>
+                            <td>2015–2018</td>
+                            <td>ASP.NET MVC &amp; Web API</td>
+                            <td>MVC 5 · Web API 2 · Entity Framework · SignalR</td>
+                        </tr>
+                        <tr>
+                            <td>2018–2022</td>
+                            <td>Blockchain &amp; Web3 Development — Smart Contracts, DEX, Token Contracts, Exchange Platforms</td>
+                            <td>Solidity · Hardhat · Web3.js · .NET Core · Node.js · React</td>
+                        </tr>
+                        <tr>
+                            <td>2023–Present</td>
+                            <td>AI &amp; Blockchain Integration — AI-powered platforms, LLM integration, AI-Blockchain bridges</td>
+                            <td>Python · React 19 · Next.js · Web3.js · LangChain · PyTorch</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="legacy-note">
+                <p>
+                    <strong>📌 Note:</strong> I worked with <strong>ASP.NET WebForms</strong> and
+                    <strong>AJAX</strong> from 2003 to 2015, building enterprise applications for
+                    government and corporate clients. In 2015, I transitioned to
+                    <strong>ASP.NET MVC</strong> and <strong>Web API</strong>, and since 2018,
+                    I've been using <strong>.NET Core</strong> for backend development while
+                    focusing on <strong>Angular</strong> and <strong>React</strong> for frontend.
+                    I <strong>did not</strong> move to Blazor — I chose the Angular/React ecosystem instead.
+                </p>
+            </div>
+        </div>
+
+        <!-- ─── ADDITIONAL INFORMATION ─── -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">ℹ️</span>
+                Additional Information
+            </div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-icon">💡</span>
+                    <span><strong>Work Style:</strong> Highly collaborative, detail-oriented, thrives in fast-paced environments.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🎯</span>
+                    <span><strong>Career Focus:</strong> Deepening technical expertise in architecture &amp; financial systems.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🏗️</span>
+                    <span><strong>Architecture Philosophy:</strong> "Architecting with the team" — coding alongside developers.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">👥</span>
+                    <span><strong>Early Leadership:</strong> Led team of 4 developers as early as 2004.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">📦</span>
+                    <span><strong>Framework Builder:</strong> ActivePage — 11 years (2005–2016). Source code available.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🏆</span>
+                    <span><strong>Career Milestone:</strong> Selected among top university graduates by Professor Farmanesh.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🚀</span>
+                    <span><strong>Entrepreneur:</strong> Founded Scraper (2016–2017) — pivoted to crypto in late 2017.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🔄</span>
+                    <span><strong>Full-Spectrum:</strong> From Assembly/C to high-level web frameworks.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🌍</span>
+                    <span><strong>Languages:</strong> Fluent in English and Persian.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── CTA ─── -->
+        <div class="cta-section">
+            <div class="availability">
+                <span class="availability-dot"></span>
+                Available for Projects &amp; Consulting
+            </div>
+            <h2>Have a project in mind?</h2>
+            <p>Get in touch for a free consultation, project inquiry, or collaboration.</p>
+            <div class="cta-buttons">
+                <a href="mailto:sabetsoft@gmail.com?subject=Consultation" class="btn btn-primary">
+                    Request Consultation
+                </a>
+                <a href="https://t.me/sabetsoft_dev" class="btn btn-telegram" target="_blank" rel="noopener">
+                    Telegram
+                </a>
+                <a href="https://www.linkedin.com/in/asabetghadam" class="btn btn-linkedin" target="_blank"
+                    rel="noopener">
+                    LinkedIn
+                </a>
+                <a href="https://github.com/sabetghadam" class="btn btn-github" target="_blank" rel="noopener">
+                    GitHub
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            Most source code is private due to client confidentiality. This page includes architecture notes and project
+            summaries.<br />
+            &copy; Abbas Sabetghadam — sabetsoft@gmail.com
+        </div>
+
+    </div>
+
+    <script>
+        function openHireModal() {
+            document.getElementById('hireModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeHireModal() {
+            document.getElementById('hireModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('hireModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeHireModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeHireModal();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

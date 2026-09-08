@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Senior Frontend Developer — Abbas Sabetghadam</title>
     <meta name="description"
-        content="Senior Frontend Developer with 25+ years of experience. Specializing in React 19, Next.js 15, Angular 19, Vite + TypeScript, and Web3 frontends." />
+        content="Senior Frontend Developer with deep expertise in React 19, Next.js 15, Angular 19, Vite + TypeScript, and Web3 frontends." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -37,6 +37,14 @@
             --hire: #ff5722;
             --hire-hover: #e64a19;
             --hire-glow: rgba(255, 87, 34, 0.4);
+            --icon-bg: #f0f4ff;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
@@ -45,12 +53,12 @@
             color: var(--text);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+            padding: 60px 30px;
         }
 
         .container {
             max-width: 860px;
             margin: 0 auto;
-            padding: 60px 30px;
         }
 
         /* ─── Floating Hire Button ─── */
@@ -74,40 +82,14 @@
             font-weight: 700;
             font-family: 'Inter', sans-serif;
             cursor: pointer;
-            text-decoration: none;
-            letter-spacing: 0.02em;
             box-shadow: 0 8px 30px var(--hire-glow);
-            animation: hirePulse 2s ease-in-out infinite, hireGlow 2s ease-in-out infinite;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hire-btn::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.2) 50%, transparent 60%);
-            animation: hireShine 3s ease-in-out infinite;
+            animation: hirePulse 2s ease-in-out infinite;
         }
 
         .hire-btn:hover {
             transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 12px 40px var(--hire-glow);
             background: var(--hire-hover);
-        }
-
-        .hire-btn:active {
-            transform: translateY(-1px) scale(0.98);
-        }
-
-        .hire-icon {
-            width: 20px;
-            height: 20px;
-            animation: hireBounce 0.6s ease-in-out infinite alternate;
         }
 
         @keyframes hirePulse {
@@ -119,38 +101,6 @@
 
             50% {
                 transform: scale(1.04);
-            }
-        }
-
-        @keyframes hireGlow {
-
-            0%,
-            100% {
-                box-shadow: 0 8px 30px var(--hire-glow);
-            }
-
-            50% {
-                box-shadow: 0 8px 50px rgba(255, 87, 34, 0.6);
-            }
-        }
-
-        @keyframes hireShine {
-            0% {
-                transform: translateX(-100%) rotate(45deg);
-            }
-
-            100% {
-                transform: translateX(100%) rotate(45deg);
-            }
-        }
-
-        @keyframes hireBounce {
-            0% {
-                transform: translateY(0);
-            }
-
-            100% {
-                transform: translateY(-3px);
             }
         }
 
@@ -209,7 +159,6 @@
         .modal-header .modal-subtitle {
             font-size: 0.9rem;
             opacity: 0.9;
-            font-weight: 400;
         }
 
         .modal-body {
@@ -234,7 +183,6 @@
             font-weight: 600;
             font-size: 0.95rem;
             transition: all 0.2s ease;
-            cursor: pointer;
         }
 
         .modal-option:hover {
@@ -314,117 +262,107 @@
         /* ─── Header ─── */
         .header {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 64px;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        .profile-section {
-            display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .profile-pic {
-            width: 72px;
-            height: 72px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--border);
             flex-shrink: 0;
         }
 
-        .profile-info h1 {
-            font-size: 2.4rem;
+        .header-title h1 {
+            font-size: 2rem;
             font-weight: 700;
             letter-spacing: -0.02em;
             color: var(--primary);
-            margin-bottom: 2px;
             line-height: 1.2;
         }
 
-        .profile-info .role {
-            font-size: 1rem;
+        .header-title .role {
+            font-size: 0.95rem;
             font-weight: 500;
             color: #555;
+            margin-top: 2px;
         }
 
-        .profile-info .role .highlight {
+        .header-title .role .highlight {
             color: var(--accent);
             font-weight: 600;
         }
 
-        .social-icons {
+        /* ─── Social Box ─── */
+        .social-box {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            gap: 12px;
-            margin-top: 8px;
+            gap: 12px 20px;
+            padding: 10px 18px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #f8f8f8;
+            width: 100%;
         }
 
-        .social-icon-link {
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: #444;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .social-item:hover {
+            color: var(--accent);
+        }
+
+        .social-item .icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            color: #555;
-            transition: all 0.2s;
-            text-decoration: none;
         }
 
-        .social-icon-link:hover {
-            background: #eee;
+        .social-item .icon svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .social-item .label {
+            font-weight: 500;
+            color: #666;
+        }
+
+        .social-item .handle {
             color: var(--primary);
+            font-weight: 400;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.75rem;
         }
 
-        .social-icon-link.email-icon:hover {
-            background: #e3f2fd;
-            color: #1565c0;
+        .social-item .handle.email {
+            color: var(--accent);
         }
 
-        .social-icon-link.telegram-icon:hover {
-            background: #e0f7fa;
-            color: #0088cc;
-        }
-
-        .social-icon-link.linkedin-icon:hover {
-            background: #e8eaf6;
-            color: #0a66c2;
-        }
-
-        .social-icon-link.github-icon:hover {
-            background: #f5f5f5;
-            color: #111;
-        }
-
-        .header-right {
-            text-align: right;
-            flex-shrink: 0;
-        }
-
-        .header-right .email-display {
-            font-size: 0.85rem;
-            color: var(--muted);
-            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-            background: #f5f5f5;
-            padding: 6px 12px;
-            border-radius: 4px;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 0 0 56px 0;
+        .social-item:hover .handle.email {
+            text-decoration: underline;
         }
 
         /* ─── Breadcrumb ─── */
@@ -443,20 +381,30 @@
             text-decoration: underline;
         }
 
-        /* ─── Section ─── */
+        /* ─── Sections ─── */
         .section {
-            margin-bottom: 56px;
+            margin-bottom: 48px;
         }
 
         .section-title {
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.06em;
             color: #333;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border);
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title .section-icon {
+            font-size: 1.2rem;
+            background: var(--icon-bg);
+            padding: 4px 8px;
+            border-radius: 6px;
         }
 
         .section-title .badge-new {
@@ -466,7 +414,6 @@
             color: #fff;
             padding: 2px 10px;
             border-radius: 12px;
-            margin-left: 8px;
             font-weight: 600;
         }
 
@@ -520,42 +467,212 @@
             color: #e65100;
         }
 
-        .table-wrapper {
-            overflow-x: auto;
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px 24px;
         }
 
-        table {
+        .competencies-grid .item {
+            font-size: 0.9rem;
+            color: #444;
+            padding: 6px 0 6px 28px;
+            border-bottom: 1px solid #f5f5f5;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .competencies-grid .item .icon {
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .competencies-grid .item::before {
+            display: none;
+        }
+
+        .exp-item {
+            margin-bottom: 28px;
+            padding-left: 28px;
+            position: relative;
+            border-left: 3px solid #e0e0e0;
+            padding-left: 24px;
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-item::before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 2px solid var(--card);
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 4px 12px;
+            margin-bottom: 2px;
+        }
+
+        .exp-header h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #111;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .exp-header h3 .exp-icon {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .exp-header .year {
+            font-size: 0.85rem;
+            color: #888;
+            font-weight: 500;
+            background: #f5f5f5;
+            padding: 0 10px;
+            border-radius: 12px;
+        }
+
+        .exp-sub {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .exp-list {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .exp-list li {
+            padding: 2px 0 2px 24px;
+            position: relative;
+        }
+
+        .exp-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .project-item {
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .project-item:hover {
+            border-color: var(--accent);
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-item h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #111;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-item h3 .project-icon {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .project-item ul {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.8;
+            margin-top: 2px;
+        }
+
+        .project-item ul li {
+            padding: 1px 0 1px 24px;
+            position: relative;
+        }
+
+        .project-item ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 8px;
+        }
+
+        .table-wrapper table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.9rem;
+            background: var(--card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
         }
 
-        thead th {
+        .table-wrapper thead th {
             text-align: left;
             font-weight: 600;
             font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: #888;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border);
+            padding: 12px 16px;
+            background: #f8f8f8;
+            border-bottom: 2px solid var(--border);
         }
 
-        tbody td {
-            padding: 14px 0;
+        .table-wrapper tbody td {
+            padding: 12px 16px;
             border-bottom: 1px solid #f0f0f0;
             vertical-align: top;
             color: #444;
         }
 
-        tbody tr:last-child td {
+        .table-wrapper tbody tr:last-child td {
             border-bottom: none;
         }
 
-        tbody td:first-child {
+        .table-wrapper tbody td:first-child {
             font-weight: 600;
             color: var(--primary);
-            min-width: 100px;
+            white-space: nowrap;
         }
 
         .project-link {
@@ -667,6 +784,48 @@
             color: #4ec9b0;
         }
 
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 30px;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        .info-grid strong {
+            color: #111;
+        }
+
+        .info-grid .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 6px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .info-grid .info-item .info-icon {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 2px;
+            width: 22px;
+            text-align: center;
+        }
+
+        .realtime-note {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 16px 20px;
+            border-right: 4px solid #1565c0;
+            margin-top: 16px;
+        }
+
+        .realtime-note p {
+            font-size: 0.9rem;
+            color: #333;
+            margin: 0;
+        }
+
         .cta-section {
             background: var(--card);
             border: 1px solid var(--border);
@@ -708,12 +867,13 @@
             transition: all 0.2s;
             cursor: pointer;
             font-family: 'Inter', sans-serif;
+            border: 2px solid transparent;
         }
 
         .btn-primary {
             background: var(--accent);
             color: #fff;
-            border: 2px solid var(--accent);
+            border-color: var(--accent);
         }
 
         .btn-primary:hover {
@@ -724,7 +884,7 @@
         .btn-telegram {
             background: #0088cc;
             color: #fff;
-            border: 2px solid #0088cc;
+            border-color: #0088cc;
         }
 
         .btn-telegram:hover {
@@ -735,7 +895,7 @@
         .btn-linkedin {
             background: #0a66c2;
             color: #fff;
-            border: 2px solid #0a66c2;
+            border-color: #0a66c2;
         }
 
         .btn-linkedin:hover {
@@ -746,7 +906,7 @@
         .btn-github {
             background: #111;
             color: #fff;
-            border: 2px solid #111;
+            border-color: #111;
         }
 
         .btn-github:hover {
@@ -824,55 +984,36 @@
             text-decoration: underline;
         }
 
-        .legacy-note {
-            background: #fff3e0;
-            border-radius: 8px;
-            padding: 16px 20px;
-            border-right: 4px solid #e65100;
-            margin-top: 16px;
-        }
-
-        .legacy-note p {
-            font-size: 0.9rem;
-            color: #555;
-            margin: 0;
-        }
-
-        .legacy-note strong {
-            color: #333;
-        }
-
-        .realtime-note {
-            background: #e3f2fd;
-            border-radius: 8px;
-            padding: 16px 20px;
-            border-right: 4px solid #1565c0;
-            margin-top: 16px;
-        }
-
-        .realtime-note p {
-            font-size: 0.9rem;
-            color: #333;
-            margin: 0;
-        }
-
         @media (max-width: 650px) {
             .container {
                 padding: 40px 20px;
             }
 
-            .header {
+            .header-top {
+                flex-wrap: wrap;
+            }
+
+            .header-title h1 {
+                font-size: 1.5rem;
+            }
+
+            .social-box {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: stretch;
+                gap: 6px;
+                padding: 10px 14px;
             }
 
-            .header-right {
-                text-align: left;
-                margin-top: 16px;
+            .social-item {
+                font-size: 0.75rem;
             }
 
-            .profile-info h1 {
-                font-size: 1.8rem;
+            .social-item .handle {
+                font-size: 0.7rem;
+            }
+
+            .competencies-grid {
+                grid-template-columns: 1fr;
             }
 
             .skill-grid,
@@ -880,8 +1021,8 @@
                 grid-template-columns: 1fr;
             }
 
-            tbody td:first-child {
-                min-width: 80px;
+            .info-grid {
+                grid-template-columns: 1fr;
             }
 
             .cta-buttons {
@@ -914,17 +1055,24 @@
                 padding: 14px 16px;
             }
 
-            .section-title .badge-new {
-                display: inline-block;
-                margin-top: 4px;
+            .exp-item {
+                padding-left: 16px;
             }
 
-            .legacy-note,
+            .exp-item::before {
+                left: -6px;
+                width: 10px;
+                height: 10px;
+            }
+
+            .table-wrapper tbody td:first-child {
+                white-space: normal;
+            }
+
             .realtime-note {
                 padding: 12px 16px;
             }
 
-            .legacy-note p,
             .realtime-note p {
                 font-size: 0.8rem;
             }
@@ -936,12 +1084,7 @@
 
     <!-- ─── Floating Hire Button ─── -->
     <div class="floating-hire">
-        <button class="hire-btn" onclick="openHireModal()" aria-label="Hire Me Now">
-            <svg class="hire-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            HIRE ME
-        </button>
+        <button class="hire-btn" onclick="openHireModal()">HIRE ME</button>
     </div>
 
     <!-- ─── Hire Modal ─── -->
@@ -954,25 +1097,14 @@
             <div class="modal-body">
                 <div class="modal-options">
                     <a href="mailto:sabetsoft@gmail.com?subject=Frontend%20Project%20Inquiry" class="modal-option">
-                        <div class="modal-option-icon email">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                <polyline points="22,6 12,13 2,6" />
-                            </svg>
-                        </div>
+                        <div class="modal-option-icon email">✉️</div>
                         <div class="modal-option-text">
                             Send an Email
                             <small>sabetsoft@gmail.com</small>
                         </div>
                     </a>
                     <a href="https://t.me/sabetsoft_dev" target="_blank" rel="noopener" class="modal-option">
-                        <div class="modal-option-icon telegram">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.015-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.145.118.185.276.208.542z" />
-                            </svg>
-                        </div>
+                        <div class="modal-option-icon telegram">💬</div>
                         <div class="modal-option-text">
                             Chat on Telegram
                             <small>@sabetsoft_dev</small>
@@ -980,24 +1112,14 @@
                     </a>
                     <a href="https://www.linkedin.com/in/asabetghadam" target="_blank" rel="noopener"
                         class="modal-option">
-                        <div class="modal-option-icon linkedin">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                            </svg>
-                        </div>
+                        <div class="modal-option-icon linkedin">🔗</div>
                         <div class="modal-option-text">
                             Connect on LinkedIn
                             <small>Professional profile</small>
                         </div>
                     </a>
                     <a href="https://github.com/sabetghadam" target="_blank" rel="noopener" class="modal-option">
-                        <div class="modal-option-icon github">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                            </svg>
-                        </div>
+                        <div class="modal-option-icon github">🐙</div>
                         <div class="modal-option-text">
                             View GitHub
                             <small>Open source &amp; project samples</small>
@@ -1014,60 +1136,61 @@
 
         <!-- ─── HEADER ─── -->
         <div class="header">
-            <div class="header-left">
-                <div class="profile-section">
-                    <img src="https://avatars.githubusercontent.com/u/6519453?s=96&v=4" alt="Abbas Sabetghadam"
-                        class="profile-pic" />
-                    <div class="profile-info">
-                        <h1>Abbas Sabetghadam</h1>
-                        <div class="role">
-                            Senior Frontend Developer &amp; Software Architect —
-                            <span class="highlight">25+ Years of Experience</span>
-                        </div>
-                        <div class="social-icons">
-                            <a href="javascript:void(0)" class="social-icon-link email-icon" onclick="copyEmail()"
-                                title="Copy Email">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path
-                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                    <polyline points="22,6 12,13 2,6" />
-                                </svg>
-                            </a>
-                            <a href="https://t.me/sabetsoft_dev" target="_blank" rel="noopener"
-                                class="social-icon-link telegram-icon" title="Telegram">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.015-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.145.118.185.276.208.542z" />
-                                </svg>
-                            </a>
-                            <a href="https://www.linkedin.com/in/asabetghadam" target="_blank" rel="noopener"
-                                class="social-icon-link linkedin-icon" title="LinkedIn">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                </svg>
-                            </a>
-                            <a href="https://github.com/sabetghadam" target="_blank" rel="noopener"
-                                class="social-icon-link github-icon" title="GitHub">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                                </svg>
-                            </a>
-                        </div>
+
+            <div class="header-top">
+                <img src="https://avatars.githubusercontent.com/u/6519453?s=96&v=4" alt="Abbas Sabetghadam"
+                    class="profile-pic" />
+                <div class="header-title">
+                    <h1>Abbas Sabetghadam</h1>
+                    <div class="role">
+                        Senior Frontend Developer &amp; Software Architect
                     </div>
                 </div>
             </div>
-            <div class="header-right">
-                <span class="email-display" id="emailDisplay">sabetsoft@gmail.com</span>
-                <div id="copyToast"
-                    style="font-size:0.7rem;color:var(--green);margin-top:4px;opacity:0;transition:opacity 0.3s;">
-                    Copied!</div>
-            </div>
-        </div>
 
-        <hr />
+            <div class="social-box">
+
+                <a href="mailto:sabetsoft@gmail.com" class="social-item">
+                    <span class="icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </span>
+                    <span class="label">Email</span>
+                    <span class="handle email">sabetsoft@gmail.com</span>
+                </a>
+
+                <a href="https://t.me/sabetsoft_dev" target="_blank" rel="noopener" class="social-item">
+                    <span class="icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.015-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.145.118.185.276.208.542z" />
+                        </svg>
+                    </span>
+                    <span class="handle">@sabetsoft_dev</span>
+                </a>
+
+                <a href="https://www.linkedin.com/in/asabetghadam" target="_blank" rel="noopener" class="social-item">
+                    <span class="icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </span>
+                    <span class="handle">in/asabetghadam</span>
+                </a>
+
+                <a href="https://github.com/sabetghadam" target="_blank" rel="noopener" class="social-item">
+                    <span class="icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </span>
+                    <span class="handle">sabetghadam</span>
+                </a>
+
+            </div>
+
+        </div>
 
         <!-- ─── BREADCRUMB ─── -->
         <div class="breadcrumb">
@@ -1076,11 +1199,14 @@
 
         <!-- ─── OVERVIEW ─── -->
         <div class="section">
-            <div class="section-title">Overview</div>
+            <div class="section-title">
+                <span class="section-icon">📋</span>
+                Overview
+            </div>
             <p style="font-size:1.05rem; color:#333; margin-bottom:16px;">
-                Senior Frontend Developer with <strong>25+ years</strong> of experience —
+                Senior Frontend Developer with deep expertise in modern frameworks —
                 from <span class="inline-code">HTML</span>, <span class="inline-code">CSS</span>,
-                and <span class="inline-code">JavaScript</span> to modern frameworks like
+                and <span class="inline-code">JavaScript</span> to
                 <span class="inline-code">React 19</span>, <span class="inline-code">Next.js 15</span>,
                 <span class="inline-code">Angular 19</span>, and <span class="inline-code">Vue 3</span>.
             </p>
@@ -1094,10 +1220,6 @@
                 across fintech, e-commerce, gaming, and blockchain industries.
             </p>
             <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:16px;">
-                <span
-                    style="background:#e8f5e9; padding:4px 14px; border-radius:20px; font-size:0.8rem; color:#2e7d32;">
-                    ✅ 25+ Years Experience
-                </span>
                 <span
                     style="background:#e3f2fd; padding:4px 14px; border-radius:20px; font-size:0.8rem; color:#1565c0;">
                     ✅ 16+ Angular Projects
@@ -1113,9 +1235,28 @@
             </div>
         </div>
 
+        <!-- ─── CORE COMPETENCIES ─── -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">⚡</span>
+                Core Competencies
+            </div>
+            <div class="competencies-grid">
+                <div class="item"><span class="icon">🎨</span> Modern Frontend Architecture (React, Angular, Vue)</div>
+                <div class="item"><span class="icon">⚡</span> Performance Optimization &amp; Core Web Vitals</div>
+                <div class="item"><span class="icon">🧩</span> Component Design Systems &amp; Storybook</div>
+                <div class="item"><span class="icon">🌐</span> Web3 &amp; Blockchain Frontends (Web3.js, Ethers.js)</div>
+                <div class="item"><span class="icon">🔄</span> Real-Time Apps (WebSocket, SignalR, SSE)</div>
+                <div class="item"><span class="icon">📱</span> Responsive &amp; Accessibility (WCAG 2.1 AA)</div>
+                <div class="item"><span class="icon">🔒</span> Frontend Security (XSS, CSRF, CSP, JWT)</div>
+                <div class="item"><span class="icon">🧪</span> Testing (Jest, Vitest, Playwright, Cypress)</div>
+            </div>
+        </div>
+
         <!-- ─── MODERN TECH STACK ─── -->
         <div class="section">
             <div class="section-title">
+                <span class="section-icon">🛠️</span>
                 Modern Frontend Stack
                 <span class="badge-new">2023–2026</span>
             </div>
@@ -1201,9 +1342,102 @@
             </div>
         </div>
 
+        <!-- ─── PROFESSIONAL EXPERIENCE ─── -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">💼</span>
+                Professional Experience
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <h3><span class="exp-icon">🧑‍💻</span> Senior Frontend Developer &amp; Software Architect</h3>
+                    <span class="year">2018 – Present</span>
+                </div>
+                <div class="exp-sub">Coinatik · Arbify.site · AIConnective · ECOMSYS</div>
+                <ul class="exp-list">
+                    <li><strong>Coinatik (2018):</strong> Built AngularJS frontend for P2P crypto exchange with real-time WebSocket chat, wallet UI, and escrow dashboard.</li>
+                    <li><strong>Arbify.site (2023):</strong> Developed React 18 frontend with TypeScript, WebSocket for live arbitrage data, Chart.js for real-time visualizations, and responsive design for 500+ concurrent users.</li>
+                    <li><strong>AIConnective (2024):</strong> Architected React 19 + Next.js 15 frontend with Web3.js integration, Tailwind CSS, and AI-powered dashboard for blockchain analytics.</li>
+                    <li><strong>ECOMSYS (2023+):</strong> Built Angular 17–19 frontend with SignalR for real-time notifications, modular architecture, and role-based access control.</li>
+                    <li>Led frontend teams of 3–6 engineers · Code reviews · CI/CD · Performance optimization.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <h3><span class="exp-icon">✈️</span> Freelance Frontend Developer</h3>
+                    <span class="year">2016 – 2018</span>
+                </div>
+                <div class="exp-sub">Probin · Kabby · Jandro · Scraper</div>
+                <ul class="exp-list">
+                    <li><strong>Probin (Netherlands):</strong> Built cross-platform mobile app frontend with Xamarin (C#).</li>
+                    <li><strong>Kabby (Pakistan):</strong> Developed taxi app frontend with Xamarin.Forms.</li>
+                    <li><strong>Jandro:</strong> Built ASP.NET MVC web portal + Android native service for remote call logging.</li>
+                    <li><strong>Scraper (2016–2017):</strong> Built commercial scraping platform frontend with plugin-based architecture.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- ─── KEY FRONTEND PROJECTS ─── -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">🚀</span>
+                Key Frontend Projects
+            </div>
+
+            <div class="project-item">
+                <h3><span class="project-icon">📊</span> Arbify.site – Real-Time Arbitrage Dashboard</h3>
+                <ul>
+                    <li><strong>Frontend:</strong> React 18 · TypeScript · WebSocket · Chart.js · Tailwind CSS</li>
+                    <li><strong>Features:</strong> Live price updates from exchanges, real-time arbitrage detection, interactive charts, 500+ concurrent users.</li>
+                    <li><strong>Performance:</strong> Optimized re-renders, virtualized lists, <100ms latency for data updates.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h3><span class="project-icon">🤖</span> AIConnective – AI-Blockchain Dashboard</h3>
+                <ul>
+                    <li><strong>Frontend:</strong> React 19 · Next.js 15 · Web3.js · Tailwind CSS · TypeScript</li>
+                    <li><strong>Features:</strong> AI-powered blockchain analytics, LLM integration, on-chain data visualization, responsive design.</li>
+                    <li><strong>Innovation:</strong> Independent scaling layers for AI and blockchain data, real-time WebSocket updates.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h3><span class="project-icon">💰</span> Coinatik – P2P Crypto Exchange UI</h3>
+                <ul>
+                    <li><strong>Frontend:</strong> AngularJS · WebSocket · Bootstrap · JavaScript</li>
+                    <li><strong>Features:</strong> Real-time chat between buyers and sellers, order book, wallet UI, escrow dashboard.</li>
+                    <li><strong>Impact:</strong> Full-featured exchange UI with real-time communication.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h3><span class="project-icon">🛒</span> ECOMSYS – Enterprise E-Commerce Platform</h3>
+                <ul>
+                    <li><strong>Frontend:</strong> Angular 17–19 · SignalR · TypeScript · Sass</li>
+                    <li><strong>Features:</strong> Real-time order notifications, inventory updates, user activity tracking, role-based access control.</li>
+                    <li><strong>Impact:</strong> 99.9% uptime, supporting a growing product catalog and user base.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h3><span class="project-icon">⛓️</span> Unilab – DEX Frontend on Polygon (2022)</h3>
+                <ul>
+                    <li><strong>Frontend:</strong> React · Web3.js · Solidity · TypeScript</li>
+                    <li><strong>Features:</strong> Decentralized Exchange UI, custom token mining dashboard, staking interface, liquidity pools.</li>
+                    <li><strong>Innovation:</strong> Complete DeFi frontend on Polygon with real-time blockchain data.</li>
+                </ul>
+            </div>
+
+        </div>
+
         <!-- ─── ANGULAR EXPERIENCE ─── -->
         <div class="section">
             <div class="section-title">
+                <span class="section-icon">🅰️</span>
                 Angular — 2017 to 2026
                 <span class="badge-new">16+ Projects</span>
             </div>
@@ -1250,6 +1484,7 @@
         <!-- ─── REACT EXPERIENCE ─── -->
         <div class="section">
             <div class="section-title">
+                <span class="section-icon">⚛️</span>
                 React — 2023 to 2026
                 <span class="badge-new">8+ Projects</span>
             </div>
@@ -1308,6 +1543,7 @@
         <!-- ─── REAL-TIME & WEBSOCKET SYSTEMS ─── -->
         <div class="section">
             <div class="section-title">
+                <span class="section-icon">🔄</span>
                 Real-Time &amp; WebSocket Systems
                 <span class="badge-new">Live Chat · Dashboards</span>
             </div>
@@ -1367,6 +1603,7 @@
         <!-- ─── VITE + TYPESCRIPT ─── -->
         <div class="section">
             <div class="section-title">
+                <span class="section-icon">⚡</span>
                 Vite + TypeScript — Modern Build Tool
                 <span class="badge-new">2025–2026</span>
             </div>
@@ -1415,7 +1652,10 @@
 
         <!-- ─── FRONTEND ARCHITECTURE ─── -->
         <div class="section">
-            <div class="section-title">Frontend Architecture Expertise</div>
+            <div class="section-title">
+                <span class="section-icon">🏗️</span>
+                Frontend Architecture Expertise
+            </div>
             <div class="feature-grid">
                 <div class="feature-item">
                     <div class="icon">🧩</div>
@@ -1441,9 +1681,56 @@
             </div>
         </div>
 
+        <!-- ─── ADDITIONAL INFORMATION ─── -->
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">ℹ️</span>
+                Additional Information
+            </div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-icon">💡</span>
+                    <span><strong>Work Style:</strong> Highly collaborative, detail-oriented, thrives in fast-paced environments.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🎯</span>
+                    <span><strong>Career Focus:</strong> Deepening technical expertise in frontend architecture &amp; Web3.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🏗️</span>
+                    <span><strong>Architecture Philosophy:</strong> "Architecting with the team" — coding alongside developers.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">👥</span>
+                    <span><strong>Early Leadership:</strong> Led team of 4 developers as early as 2004.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">📦</span>
+                    <span><strong>Framework Builder:</strong> ActivePage — 11 years (2005–2016). Source code available.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🏆</span>
+                    <span><strong>Career Milestone:</strong> Selected among top university graduates by Professor Farmanesh.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🚀</span>
+                    <span><strong>Entrepreneur:</strong> Founded Scraper (2016–2017) — pivoted to crypto in late 2017.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🔄</span>
+                    <span><strong>Full-Spectrum:</strong> From Assembly/C to high-level web frameworks.</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🌍</span>
+                    <span><strong>Languages:</strong> Fluent in English and Persian.</span>
+                </div>
+            </div>
+        </div>
+
         <!-- ─── OS & KERNEL DEVELOPMENT ─── -->
         <div class="section">
             <div class="section-title">
+                <span class="section-icon">💻</span>
                 OS &amp; Kernel Development
                 <span class="badge-new">2010+</span>
             </div>
@@ -1477,84 +1764,6 @@
             </div>
         </div>
 
-        <!-- ─── LEGACY & HISTORICAL EXPERIENCE ─── -->
-        <div class="section">
-            <div class="section-title">
-                Legacy &amp; Historical Experience — .NET &amp; WebForms Era
-                <span class="badge-new">2003–2018</span>
-            </div>
-            <blockquote>
-                I started my career with <strong>ASP.NET WebForms</strong> in 2003, long before modern
-                frontend frameworks existed. This era gave me a deep understanding of HTTP lifecycle,
-                server-side rendering, and the evolution of web development.
-            </blockquote>
-
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Period</th>
-                            <th>Technology Stack</th>
-                            <th>Key Concepts &amp; Skills</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>2003–2010</strong></td>
-                            <td>ASP.NET WebForms · C# · SQL Server · Visual Studio 2003–2008</td>
-                            <td>
-                                Server Controls, ViewState, PostBack, Page Lifecycle, DataGrid, GridView,
-                                Master Pages, User Controls, Session Management, Authentication (Forms Auth)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>2010–2015</strong></td>
-                            <td>ASP.NET WebForms · AJAX · jQuery · SQL Server 2008–2012</td>
-                            <td>
-                                <strong>AJAX</strong> (UpdatePanel, ScriptManager, Page Methods),
-                                <strong>jQuery</strong> (DOM manipulation, AJAX calls, client-side validation),
-                                Web Services (.asmx), WCF Services, T-SQL Stored Procedures
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>2015–2018</strong></td>
-                            <td>ASP.NET MVC 5 · Web API 2 · Entity Framework · SQL Server 2014+</td>
-                            <td>
-                                <strong>MVC Pattern</strong> (Controllers, Views, Razor),
-                                <strong>Web API</strong> (RESTful services, JSON, HTTP verbs),
-                                Dependency Injection, Unit of Work, Repository Pattern,
-                                Async/Await, OWIN, SignalR
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>2018–Present</strong></td>
-                            <td>.NET Core 2–8 · C# · SQL Server · MongoDB</td>
-                            <td>
-                                <strong>Backend only (since 2018)</strong> — I moved frontend to Angular &amp; React,
-                                but continued backend development with .NET Core.
-                                Microservices, Minimal APIs, Entity Framework Core,
-                                Dependency Injection, Middleware, JWT Authentication,
-                                Redis Caching, Background Services (IHostedService),
-                                Performance Optimization, Query Tuning
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="legacy-note">
-                <p>
-                    <strong>📌 Note:</strong> I worked with <strong>ASP.NET WebForms</strong> and
-                    <strong>AJAX</strong> from 2003 to 2015, building enterprise applications for
-                    government and corporate clients. In 2015, I transitioned to
-                    <strong>ASP.NET MVC</strong> and <strong>Web API</strong>, and since 2018,
-                    I've been using <strong>.NET Core</strong> for backend development while
-                    focusing on <strong>Angular</strong> and <strong>React</strong> for frontend.
-                    I <strong>did not</strong> move to Blazor — I chose the Angular/React ecosystem instead.
-                </p>
-            </div>
-        </div>
-
         <!-- ─── NOTE ABOUT MOBILE ─── -->
         <div class="section">
             <div class="mobile-note">
@@ -1578,32 +1787,16 @@
             <p>Let's build something exceptional together — from design systems to full-scale applications.</p>
             <div class="cta-buttons">
                 <a href="mailto:sabetsoft@gmail.com?subject=Frontend%20Project%20Inquiry" class="btn btn-primary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                        <polyline points="22,6 12,13 2,6" />
-                    </svg>
                     Start a Project
                 </a>
                 <a href="https://t.me/sabetsoft_dev" class="btn btn-telegram" target="_blank" rel="noopener">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.015-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.752-.244-1.349-.374-1.297-.788.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.145.118.185.276.208.542z" />
-                    </svg>
                     Telegram
                 </a>
                 <a href="https://www.linkedin.com/in/asabetghadam" class="btn btn-linkedin" target="_blank"
                     rel="noopener">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                    </svg>
                     LinkedIn
                 </a>
                 <a href="https://github.com/sabetghadam" class="btn btn-github" target="_blank" rel="noopener">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                    </svg>
                     GitHub
                 </a>
             </div>
@@ -1618,16 +1811,6 @@
     </div>
 
     <script>
-        function copyEmail() {
-            navigator.clipboard.writeText('sabetsoft@gmail.com').then(function () {
-                var toast = document.getElementById('copyToast');
-                toast.style.opacity = '1';
-                setTimeout(function () {
-                    toast.style.opacity = '0';
-                }, 1500);
-            });
-        }
-
         function openHireModal() {
             document.getElementById('hireModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1638,13 +1821,13 @@
             document.body.style.overflow = '';
         }
 
-        document.getElementById('hireModal').addEventListener('click', function (e) {
+        document.getElementById('hireModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeHireModal();
             }
         });
 
-        document.addEventListener('keydown', function (e) {
+        document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeHireModal();
             }

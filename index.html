@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Abbas Sabetghadam — Software Architect &amp; Frontend Developer</title>
+    <title>Abbas Sabetghadam — Software Architect, Frontend &amp; Blockchain Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
@@ -21,7 +21,7 @@
             padding: 60px 30px;
         }
         .container {
-            max-width: 720px;
+            max-width: 1020px;
             margin: 0 auto;
             text-align: center;
         }
@@ -67,6 +67,8 @@
             color: #1a1a1a;
             transition: all 0.25s ease;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
         }
         .card:hover {
             border-color: #1565c0;
@@ -85,6 +87,7 @@
         .card p {
             font-size: 0.9rem;
             color: #666;
+            flex: 1;
         }
         .card .badge {
             display: inline-block;
@@ -94,7 +97,17 @@
             border-radius: 12px;
             background: #e3f2fd;
             color: #1565c0;
-            margin-top: 8px;
+            margin-top: 12px;
+            align-self: center;
+        }
+        /* Blockchain card accent */
+        .card.blockchain:hover {
+            border-color: #2e7d32;
+            box-shadow: 0 8px 24px rgba(46, 125, 50, 0.12);
+        }
+        .card.blockchain .badge {
+            background: #e8f5e9;
+            color: #2e7d32;
         }
         .footer-note {
             margin-top: 48px;
@@ -115,7 +128,7 @@
     <div class="container">
         <img src="https://avatars.githubusercontent.com/u/6519453?s=96&v=4" alt="Abbas Sabetghadam" class="profile-pic" />
         <h1>Abbas Sabetghadam</h1>
-        <div class="subtitle">Software Architect &amp; Lead Full-Stack Engineer</div>
+        <div class="subtitle">Software Architect · Full-Stack &amp; Blockchain Engineer</div>
         <div class="tagline">25+ Years of Experience · Full-Spectrum Developer</div>
 
         <div class="cards">
@@ -130,6 +143,12 @@
                 <h3>Frontend Developer</h3>
                 <p>React 19, Next.js 15, Angular 19, Vite + TypeScript, Web3 frontends, and design systems.</p>
                 <span class="badge">Modern Stack</span>
+            </a>
+            <a href="blockchain.html" class="card blockchain">
+                <div class="icon">⛓️</div>
+                <h3>Senior Blockchain Engineer</h3>
+                <p>Solidity, DeFi, DEX, smart contracts, token standards, and AI-blockchain integration.</p>
+                <span class="badge">10+ Years in Web3</span>
             </a>
         </div>
 

@@ -1,0 +1,17 @@
+# Temp HTML files (e.g. index_temp.html, about_temp.html)
+*_temp.html
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log

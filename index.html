@@ -38,7 +38,40 @@
             font-weight: 700;
             letter-spacing: -0.02em;
             color: #111;
-            margin-bottom: 6px;
+            margin-bottom: 12px;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 38px;
+            padding: 8px 14px;
+            border: 1px solid #d8d8d8;
+            border-radius: 999px;
+            background: #fff;
+            color: #333;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
+        }
+        .contact-link:hover {
+            background: #f5f5f5;
+        }
+        .contact-link.whatsapp:hover {
+            border-color: #25d366;
+            color: #128c4a;
+        }
+        .contact-link.telegram:hover {
+            border-color: #229ed9;
+            color: #168ac0;
         }
         .subtitle {
             font-size: 1rem;
@@ -178,6 +211,11 @@
     <div class="container">
         <img src="https://avatars.githubusercontent.com/u/6519453?s=96&v=4" alt="Abbas Sabetghadam" class="profile-pic" />
         <h1>Abbas Sabetghadam</h1>
+        <div class="contact-links" aria-label="Contact Abbas">
+            <a class="contact-link email" href="mailto:sabetsoft@gmail.com">✉ Email</a>
+            <a class="contact-link whatsapp" href="https://wa.me/sabetsoft" target="_blank" rel="noopener">WhatsApp @sabetsoft</a>
+            <a class="contact-link telegram" href="https://t.me/sabetsoft_dev" target="_blank" rel="noopener">Telegram @sabetsoft_dev</a>
+        </div>
         <div class="subtitle">Software Architect · Senior Full-Stack &amp; Blockchain Engineer</div>
 
         <div class="intro">

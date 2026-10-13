@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abbas Sabetghadam · Senior .NET Backend Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background-color: #f6f8fa;
+            color: #1f2328;
+            line-height: 1.5;
+            font-size: 13px;
+            padding: 1.5rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cv-card {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #ffffff;
+            border: 1px solid #d1d9e0;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(31, 35, 40, 0.04);
+            padding: 1.8rem 2rem;
+        }
+
+        /* ---------- header ---------- */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .avatar {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #d1d9e0;
+            background-color: #f6f8fa;
+            flex-shrink: 0;
+        }
+
+        .avatar-fallback {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: #24292f;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: 500;
+            border: 2px solid #d1d9e0;
+            flex-shrink: 0;
+        }
+
+        .header-text {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        h1 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #1f2328;
+            margin-bottom: 0.15rem;
+            line-height: 1.2;
+        }
+
+        .subhead {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #59636e;
+            margin-bottom: 0.5rem;
+        }
+
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: #dafbe1;
+            color: #1a7f37;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            border: 1px solid #aceebb;
+        }
+
+        /* ---------- contact ---------- */
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.2rem;
+            font-size: 0.78rem;
+            color: #59636e;
+            margin: 0.9rem 0 1.2rem 0;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid #d8dee4;
+            align-items: center;
+        }
+
+        .contact-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            word-break: break-word;
+        }
+
+        .contact-row svg.icon {
+            width: 14px;
+            height: 14px;
+            color: #59636e;
+            flex-shrink: 0;
+        }
+
+        .contact-row a {
+            color: #0969da;
+            text-decoration: none;
+        }
+
+        .contact-row a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- sections ---------- */
+        .section-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1f2328;
+            margin: 1.3rem 0 0.6rem 0;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid #d8dee4;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section-title svg {
+            width: 15px;
+            height: 15px;
+            color: #59636e;
+            flex-shrink: 0;
+        }
+
+        .summary-text {
+            font-size: 0.82rem;
+            color: #1f2328;
+            background-color: #f6f8fa;
+            padding: 0.85rem 1rem;
+            border-radius: 6px;
+            border: 1px solid #d8dee4;
+            line-height: 1.55;
+        }
+
+        /* ---------- pills ---------- */
+        .competency-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem 0.4rem;
+            margin: 0.5rem 0 0.9rem 0;
+        }
+
+        .skill-pill {
+            background-color: #ddf4ff;
+            color: #0969da;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 0.2rem 0.65rem;
+            border-radius: 20px;
+            border: 1px solid #b6e3ff;
+            white-space: nowrap;
+            line-height: 1.4;
+        }
+
+        /* ---------- tech skills grid: 2 columns desktop ---------- */
+        .tech-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.7rem;
+            margin-top: 0.4rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .skill-category {
+            background: #f6f8fa;
+            border-radius: 6px;
+            padding: 0.7rem 0.85rem;
+            border: 1px solid #d8dee4;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .skill-category h4 {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-weight: 600;
+            color: #59636e;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            line-height: 1.3;
+        }
+
+        .skill-category h4 svg {
+            width: 12px;
+            height: 12px;
+            color: #59636e;
+            flex-shrink: 0;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem 0.35rem;
+        }
+
+        .skill-category li {
+            font-size: 0.72rem;
+            background: #ffffff;
+            padding: 0.15rem 0.6rem;
+            border-radius: 12px;
+            border: 1px solid #d8dee4;
+            color: #1f2328;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            max-width: 100%;
+        }
+
+        /* accent cards */
+        .skill-category.architecture {
+            border-color: #c8b6ff;
+            background: #f7f4ff;
+        }
+
+        .skill-category.architecture h4 {
+            color: #5a3bb8;
+        }
+
+        .skill-category.architecture h4 svg {
+            color: #5a3bb8;
+        }
+
+        .skill-category.architecture li {
+            border-color: #ddd0ff;
+        }
+
+        .skill-category.primary {
+            border-color: #b6e3ff;
+            background: #f0f8ff;
+        }
+
+        .skill-category.primary h4 {
+            color: #0969da;
+        }
+
+        .skill-category.primary h4 svg {
+            color: #0969da;
+        }
+
+        .skill-category.primary li {
+            border-color: #b6e3ff;
+        }
+
+        .skill-category.frontend {
+            border-color: #b6e3ff;
+            background: #f0f8ff;
+        }
+
+        .skill-category.frontend h4 {
+            color: #0969da;
+        }
+
+        .skill-category.frontend h4 svg {
+            color: #0969da;
+        }
+
+        .skill-category.frontend li {
+            border-color: #b6e3ff;
+        }
+
+        /* ---------- experience ---------- */
+        .exp-item {
+            margin-bottom: 1rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid #eaeef2;
+        }
+
+        .exp-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .exp-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .exp-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1f2328;
+        }
+
+        .exp-company {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #0969da;
+            margin-bottom: 0.35rem;
+        }
+
+        .exp-date {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #59636e;
+            background: #eaeef2;
+            padding: 0.1rem 0.55rem;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .exp-desc {
+            margin-top: 0.35rem;
+            font-size: 0.78rem;
+            color: #1f2328;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .exp-desc p {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+            line-height: 1.5;
+        }
+
+        .exp-desc p::before {
+            content: "";
+            flex-shrink: 0;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #8b949e;
+            margin-top: 0.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
+            font-size: 0.7rem;
+        }
+
+        .tech-stack span {
+            background: #ddf4ff;
+            border: 1px solid #b6e3ff;
+            border-radius: 20px;
+            padding: 0.1rem 0.55rem;
+            color: #0969da;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .legacy-note {
+            font-size: 0.78rem;
+            color: #1f2328;
+            background: #f6f8fa;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            border: 1px solid #d8dee4;
+            line-height: 1.55;
+        }
+
+        /* ---------- footer ---------- */
+        .footer-note {
+            margin-top: 1.6rem;
+            padding-top: 0.9rem;
+            border-top: 1px solid #d8dee4;
+            font-size: 0.75rem;
+            color: #59636e;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem 0.9rem;
+            align-items: center;
+        }
+
+        .footer-note span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .footer-note svg.icon {
+            width: 13px;
+            height: 13px;
+            color: #59636e;
+            flex-shrink: 0;
+        }
+
+        .footer-note a {
+            color: #0969da;
+            text-decoration: none;
+        }
+
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            font-size: 0.68rem;
+            color: #8b949e;
+            text-align: center;
+            margin-top: 0.6rem;
+        }
+
+        /* ---------- responsive ---------- */
+        @media (max-width: 900px) {
+            .tech-skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .cv-card {
+                padding: 1.2rem 1rem;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            .avatar,
+            .avatar-fallback {
+                width: 62px;
+                height: 62px;
+                font-size: 1.3rem;
+            }
+
+            .exp-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+            }
+        }
+
+        /* ============================================================
+       PRINT / PDF — A4
+       ============================================================ */
+        @page {
+            size: A4;
+            margin: 12mm 14mm 12mm 14mm;
+        }
+
+        @media print {
+
+            html,
+            body {
+                background: #ffffff !important;
+                font-size: 10.5pt;
+                padding: 0;
+                margin: 0;
+                display: block;
+                color: #000000;
+            }
+
+            .cv-card {
+                max-width: none;
+                width: auto;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+                padding: 0;
+                background: #ffffff;
+            }
+
+            .profile-header {
+                gap: 10px;
+                margin-bottom: 8px;
+            }
+
+            .avatar,
+            .avatar-fallback {
+                width: 56px;
+                height: 56px;
+                font-size: 1.2rem;
+            }
+
+            h1 {
+                font-size: 17pt;
+            }
+
+            .subhead {
+                font-size: 10pt;
+            }
+
+            .availability-badge {
+                font-size: 8.5pt;
+                padding: 1px 8px;
+                border: 1px solid #999;
+                background: #f4f4f4 !important;
+                color: #000 !important;
+            }
+
+            .contact-row {
+                font-size: 8.5pt;
+                gap: 4px 12px;
+                margin: 8px 0 10px 0;
+                padding-bottom: 6px;
+                border-bottom: 1px solid #ccc;
+                color: #000;
+            }
+
+            .contact-row a {
+                color: #000;
+                text-decoration: none;
+            }
+
+            .contact-row svg.icon {
+                color: #000;
+            }
+
+            .section-title {
+                font-size: 11pt;
+                margin: 10px 0 5px 0;
+                padding-bottom: 2px;
+                border-bottom: 1px solid #999;
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+
+            .section-title svg {
+                color: #000;
+            }
+
+            .summary-text,
+            .legacy-note {
+                font-size: 9.5pt;
+                background: #f7f7f7 !important;
+                border: 1px solid #ccc;
+                padding: 6px 9px;
+                line-height: 1.45;
+                color: #000;
+            }
+
+            .skill-pill {
+                font-size: 8.5pt;
+                padding: 1px 7px;
+                border: 1px solid #bbb;
+                background: #f2f2f2 !important;
+                color: #000 !important;
+            }
+
+            /* print: 2-column skill grid */
+            .tech-skills-grid {
+                gap: 5px;
+                margin-bottom: 8px;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skill-category,
+            .skill-category.primary,
+            .skill-category.architecture,
+            .skill-category.frontend {
+                background: #f7f7f7 !important;
+                border: 1px solid #ccc !important;
+                padding: 5px 7px;
+                break-inside: avoid;
+                page-break-inside: avoid;
+                gap: 3px;
+            }
+
+            .skill-category h4,
+            .skill-category.primary h4,
+            .skill-category.architecture h4,
+            .skill-category.frontend h4 {
+                font-size: 7.5pt;
+                color: #333 !important;
+                margin-bottom: 2px;
+            }
+
+            .skill-category h4 svg,
+            .skill-category.primary h4 svg,
+            .skill-category.architecture h4 svg,
+            .skill-category.frontend h4 svg {
+                color: #333 !important;
+            }
+
+            .skill-category li,
+            .skill-category.primary li,
+            .skill-category.architecture li,
+            .skill-category.frontend li {
+                font-size: 8pt;
+                padding: 0 5px;
+                border: 1px solid #ccc !important;
+                background: #ffffff !important;
+            }
+
+            .exp-item {
+                break-inside: avoid;
+                page-break-inside: avoid;
+                margin-bottom: 9px;
+                padding-bottom: 8px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .exp-item:last-child {
+                border-bottom: none;
+            }
+
+            .exp-title {
+                font-size: 10.5pt;
+            }
+
+            .exp-company {
+                font-size: 9.5pt;
+                color: #000;
+            }
+
+            .exp-date {
+                font-size: 8.5pt;
+                background: #eee !important;
+                color: #000;
+                padding: 0 6px;
+            }
+
+            .exp-desc {
+                font-size: 9.5pt;
+                gap: 2px;
+            }
+
+            .exp-desc p::before {
+                background: #666;
+                margin-top: 0.55rem;
+            }
+
+            .tech-stack span {
+                font-size: 8pt;
+                background: #f2f2f2 !important;
+                border: 1px solid #bbb;
+                color: #000 !important;
+                padding: 0 6px;
+            }
+
+            .footer-note {
+                font-size: 8.5pt;
+                margin-top: 12px;
+                padding-top: 8px;
+                border-top: 1px solid #ccc;
+                color: #333;
+                gap: 4px 10px;
+            }
+
+            .footer-note a {
+                color: #000;
+                text-decoration: none;
+            }
+
+            .footer-note svg.icon {
+                color: #333;
+            }
+
+            .copyright {
+                font-size: 7.5pt;
+                color: #666;
+                margin-top: 4px;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4 {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+
+            .competency-grid,
+            .contact-row,
+            .tech-stack {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cv-card">
+
+        <!-- header -->
+        <header class="profile-header">
+            <img class="avatar" src="https://github.com/sabetghadam.png" alt="Abbas Sabetghadam"
+                onerror="this.onerror=null; this.parentNode.innerHTML='<div class=\'avatar-fallback\'>AS</div>';" />
+            <div class="header-text">
+                <h1>Abbas Sabetghadam</h1>
+                <div class="subhead">Senior .NET Backend Developer — 10+ years of hands‑on C# / .NET</div>
+                <div class="availability-badge">🌍 Remote / Relocation / Sponsorship</div>
+            </div>
+        </header>
+
+        <!-- contact -->
+        <div class="contact-row">
+            <span>
+                <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+                    <path
+                        d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z" />
+                </svg>
+                <a href="mailto:sabetsoft@gmail.com">sabetsoft@gmail.com</a>
+            </span>
+            <span>
+                <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+                    <path
+                        d="M9.294 6.928 14.357 1h-1.2L8.762 6.147 5.25 1H1.2l5.31 7.784L1.2 15h1.2l4.642-5.436L10.75 15h4.05L9.294 6.928ZM7.68 8.852l-.538-.775L2.83 1.91h1.843l3.49 5.02.538.775 4.539 6.535h-1.843L7.68 8.852Z" />
+                </svg>
+                <a href="https://twitter.com/sabetsoft" target="_blank" rel="noopener">@sabetsoft</a>
+            </span>
+            <span>
+                <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+                    <path
+                        d="M14.213 1.5a.75.75 0 0 1 1.06 1.06l-12 12a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 1 1 1.06-1.06L2.5 12.72 14.213 1.5ZM12.5 2.5h-2a.75.75 0 0 1 0-1.5h3a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0V2.5h-.25Z" />
+                </svg>
+                <a href="https://t.me/sabetsoft_dev" target="_blank" rel="noopener">@sabetsoft_dev</a>
+            </span>
+            <span>
+                <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+                    <path
+                        d="M6.5 1A1.5 1.5 0 0 0 5 2.5V5H1.5A1.5 1.5 0 0 0 0 6.5v7A1.5 1.5 0 0 0 1.5 15h13a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 14.5 5H11V2.5A1.5 1.5 0 0 0 9.5 1h-3ZM10 5H6V2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V5ZM1.5 6h13a.5.5 0 0 1 .5.5v2H1V6.5a.5.5 0 0 1 .5-.5ZM1 10h14v3.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V10Zm5-2.5h4V9H6v-1.5Z" />
+                </svg>
+                <a href="https://www.linkedin.com/in/asabetghadam" target="_blank" rel="noopener">in/asabetghadam</a>
+            </span>
+            <span>
+                <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+                    <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+                </svg>
+                <a href="https://github.com/sabetghadam" target="_blank" rel="noopener">github.com/sabetghadam</a>
+            </span>
+        </div>
+
+        <!-- summary -->
+        <h2 class="section-title">
+            <svg viewBox="0 0 16 16" fill="currentColor">
+                <path
+                    d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Z" />
+                <path d="M4 4h8v1H4zm0 3h8v1H4zm0 3h5v1H4z" />
+            </svg>
+            Professional Summary
+        </h2>
+        <div class="summary-text">
+            Senior .NET Backend Developer with 10+ years of hands‑on experience building business,
+            e‑commerce, financial and trading systems. Recent focus on ASP.NET Core, C#, EF Core,
+            LINQ, SQL Server, PostgreSQL, stored procedures and triggers. Proven ability to design
+            complex business rules — orders, discounts, promotions, multi‑level commissions — and
+            integrate them across API and database layers. Comfortable with legacy .NET (WebForms,
+            MVC, Web API, XML/SOAP) as well as modern ASP.NET Core, and with frontend integration
+            (Angular, React, TypeScript). Works independently in full‑stack roles and delivers
+            production systems directly from business requirements.
+        </div>
+
+        <!-- competencies -->
+        <h2 class="section-title">
+            <svg viewBox="0 0 16 16" fill="currentColor">
+                <path
+                    d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z" />
+            </svg>
+            Core Backend Competencies
+        </h2>
+        <div class="competency-grid">
+            <span class="skill-pill">ASP.NET Core &amp; Web API</span>
+            <span class="skill-pill">SQL Server &amp; PostgreSQL</span>
+            <span class="skill-pill">LINQ &amp; Data Access</span>
+            <span class="skill-pill">E‑Commerce &amp; Business Systems</span>
+            <span class="skill-pill">Financial &amp; Trading Systems</span>
+            <span class="skill-pill">C# Backend Development</span>
+            <span class="skill-pill">Entity Framework &amp; EF Core</span>
+            <span class="skill-pill">Stored Procedures &amp; SQL Triggers</span>
+            <span class="skill-pill">Complex Business Rules</span>
+            <span class="skill-pill">REST APIs &amp; Integrations</span>
+        </div>
+
+        <!-- technical skills: 10 cards, 2 columns -->
+        <h2 class="section-title">
+            <svg viewBox="0 0 16 16" fill="currentColor">
+                <path
+                    d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25ZM1.75.5a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Z" />
+                <path d="m5.5 4.5 2.5 3.5-2.5 3.5M10.5 4.5 8 8l2.5 3.5" />
+            </svg>
+            Technical Skills
+        </h2>
+
+        <div class="tech-skills-grid">
+
+            <!-- A. Software Architecture -->
+            <div class="skill-category architecture">
+                <h4>
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0Zm.25 1.5v13h13v-13h-13Z" />
+                        <path d="M3 3h4v4H3zm6 0h4v2H9zm0 3h4v1H9zm-6 3h4v1H3zm0 2h4v1H3zm6-2h4v4H9z" />
+                    </svg>
+                    Software Architecture &amp; System Design
+                </h4>
+                <ul>
+                    <li>Software Architecture &amp; Design Principles</li>
+                    <li>OOP &amp; UML</li>
+                    <li>Domain Modeling &amp; Complex Business Logic</li>
+                    <li>Layered &amp; Modular Architecture</li>
+                    <li>API Design &amp; System Integration</li>
+                    <li>Event‑Driven Design</li>
+                    <li>Legacy System Modernization</li>
+                    <li>Microservice Design &amp; Transaction Workflows</li>
+                    <li>Idempotency &amp; Safe Handling of Repeated Requests</li>
+                    <li>Transaction State Management &amp; Data Consistency</li>
+                </ul>
+            </div>
+
+            <!-- B. .NET Backend Engineering -->
+            <div class="skill-category primary">
+                <h4>
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z" />
+                    </svg>
+                    .NET Backend Engineering
+                </h4>
+                <ul>
+                    <li>C# &amp; .NET</li>
+                    <li>ASP.NET Core</li>
+                    <li>ASP.NET Core Web API</li>
+                    <li>ASP.NET MVC</li>
+                    <li>ASP.NET Web Forms &amp; .NET Framework</li>
+                    <li>Entity Framework Core</li>
+                    <li>LINQ</li>
+                    <li>Authentication, Authorization &amp; JWT</li>
+                    <li>Background Processing &amp; Service Integration</li>
+                    <li>Financial Workflow Reliability</li>
+                    <li>Error Handling &amp; Recovery</li>
+                </ul>
+            </div>
+
+            <!-- C. Databases -->
+            <div class="skill-category">
+                <h4>
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0ZM1.5 1.75v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25ZM11.75 3a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 .75-.75Zm-7.5 2a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0v-5.5a.75.75 0 0 1 .75-.75ZM8 6a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 6Z" />
+                    </svg>
+                    Databases &amp; Data Access
+                </h4>
+                <ul>
+                    <li>Microsoft SQL Server</li>
+                    <li>PostgreSQL &amp; MySQL</li>
+                    <li>Relational Data Modeling</li>
+                    <li>Stored Procedures &amp; Database Triggers</li>
+                    <li>Query Optimization &amp; Performance Tuning</li>
+                </ul>
+            </div>
+
+            <!-- D. Frontend Integration -->
+            <div class="skill-category frontend">
+                <h4>
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z" />
+                    </svg>
+                    Web Frontend &amp; Backend Integration
+                </h4>
+                <ul>
+                    <li>Angular</li>
+                    <li>TypeScript</li>
+                    <li>AngularJS</li>
+                    <li>JavaScript</li>
+                    <li>REST API Integration</li>
+                    <li>Frontend–Backend Integration</li>
+                    <li>React &amp; Next.js</li>
+                </ul>
+            </div>
+
+            <!-- E. DevOps -->
+            <div class="skill-category">
+                <h4>
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Z" />
+                        <path d="m8 4 4 4-4 4M4 8h8" />
+                    </svg>
+                    DevOps, CI/CD &amp; Deployment
+                </h4>
+                <ul>
+                    <li>Docker</li>
+                    <li>Linux</li>
+                    <li>Nginx</li>
+                    <li>Git &amp; GitHub</li>
+                    <li>GitHub Actions</li>
+                    <li>CI/CD Pipelines &amp; Automation</li>
+                </ul>
+            </div>
+
+            <!-- F. APIs & Distributed -->
+            <div class="skill-category">
+                <h4>
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.061l-2.574 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.458 1.458 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z" />
+                    </svg>
+                    APIs, Communication &amp; Distributed Systems
+                </h4>
+                <ul>
+                    <li>RESTful APIs</li>
+                    <li>WebSockets</li>
+                    <li>JSON &amp; XML</li>
+                    <li>SOAP‑Based Integrations</li>
+                    <li>Asynchronous Processing</li>
+                    <li>External Service Integration</li>
+                    <li>Duplicate Processing Prevention</li>
+                    <li>Reliable Service‑to‑Service Integration</li>
+                </ul>
+            </div>
+
+            <!-- G. Additional Technologies -->
+            <div class="skill-category">
+                <h4>
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z" />
+                    </svg>
+                    Additional Technologies &amp; Cross‑Platform
+                </h4>
+                <ul>
+                    <li>Node.js &amp; TypeScript</li>
+                    <li>NestJS</li>
+                    <li>WPF / Desktop Development</li>
+                    <li>Xamarin.Forms / Cross‑Platform Mobile</li>
+                    <li>XML, XSD &amp; XSLT</li>
+                </ul>
+            </div>
+
+            <!-- H. Testing, Quality & Maintenance (new) -->
+            <div class="skill-category">
+                <h4>
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M2 1.75C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v12.5A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Z" />
+                        <path d="m6 6.5 2 2 3-3" />
+                    </svg>
+                    Testing, Quality &amp; Maintenance
+                </h4>
+                <ul>
+                    <li>Unit Testing &amp; Testable Design</li>
+                    <li>Code Review &amp; Refactoring</li>
+                    <li>Debugging &amp; Root‑Cause Analysis</li>
+                    <li>Maintainability &amp; Technical Debt Awareness</li>
+                </ul>
+            </div>
+
+            <!-- I. Software Design & Problem Solving (new) -->
+            <div class="skill-category">
+                <h4>
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm3.3-2.3a.75.75 0 0 1 1.06 0L8 7.94l2.14-2.24a.75.75 0 1 1 1.06 1.06L8.9 9l2.3 2.24a.75.75 0 0 1-1.06 1.06L8 10.06l-2.14 2.24a.75.75 0 0 1-1.06-1.06L7.1 9 4.8 6.76a.75.75 0 0 1 0-1.06Z" />
+                    </svg>
+                    Software Design &amp; Problem Solving
+                </h4>
+                <ul>
+                    <li>Requirements Analysis</li>
+                    <li>System Thinking &amp; Complete‑System Understanding</li>
+                    <li>Pragmatic Technical Decision Making</li>
+                    <li>Independent Problem Solving</li>
+                </ul>
+            </div>
+
+            <!-- J. Legacy & Modernization (new) -->
+            <div class="skill-category">
+                <h4>
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0ZM1.5 1.75v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Zm2.75 2.5h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5Zm0 3h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5Zm0 3h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5Z" />
+                    </svg>
+                    Legacy Systems &amp; Modernization
+                </h4>
+                <ul>
+                    <li>ASP.NET Web Forms &amp; .NET Framework</li>
+                    <li>XML, XSD, XSLT &amp; SOAP</li>
+                    <li>Incremental Modernization</li>
+                    <li>Maintaining Long‑Lived Codebases</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- experience -->
+        <h2 class="section-title">
+            <svg viewBox="0 0 16 16" fill="currentColor">
+                <path
+                    d="M2 1.75C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v12.5A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25ZM7.25 3a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5H8a.75.75 0 0 1-.75-.75ZM5 6.25a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5A.75.75 0 0 1 5 6.25ZM5 9.25a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5A.75.75 0 0 1 5 9.25Z" />
+            </svg>
+            Professional Experience
+        </h2>
+
+        <article class="exp-item">
+            <div class="exp-header">
+                <span class="exp-title">Senior .NET Backend Developer</span>
+                <span class="exp-date">Present</span>
+            </div>
+            <div class="exp-company">Ecomsys — E‑Commerce &amp; Business Management Platform</div>
+            <div class="exp-desc">
+                <p>Develop and maintain the backend of a real‑world e‑commerce and business platform using ASP.NET Core
+                    and C#.</p>
+                <p>Implemented order workflows, discounts, promotions and multi‑level commission systems driven by
+                    configurable company plans and customer‑specific rules.</p>
+                <p>Work with EF Core, LINQ, SQL Server, PostgreSQL, stored procedures and triggers — combining
+                    application‑level and database‑level logic where appropriate.</p>
+                <p>Integrated backend services with the Angular frontend and continue extending the system as new
+                    business requirements are introduced.</p>
+            </div>
+            <div class="tech-stack">
+                <span>ASP.NET Core</span><span>C#</span><span>EF Core</span><span>LINQ</span><span>SQL
+                    Server</span><span>PostgreSQL</span><span>Angular</span>
+            </div>
+        </article>
+
+        <article class="exp-item">
+            <div class="exp-header">
+                <span class="exp-title">Full‑Stack .NET Developer</span>
+                <span class="exp-date">2 months</span>
+            </div>
+            <div class="exp-company">Coinatik — P2P Cryptocurrency Exchange</div>
+            <div class="exp-desc">
+                <p>Short engagement building backend functionality for a P2P cryptocurrency exchange using ASP.NET MVC
+                    and C#.</p>
+                <p>Implemented Deposit and Withdrawal microservices handling real financial workflows, including
+                    transaction state management and reliable integration with external systems.</p>
+                <p>Dealt with transaction‑reliability problems in practice — repeated requests, duplicate processing and
+                    recovery after failures — and addressed them based on the actual requirements of the system.</p>
+                <p>Worked on P2P trading, multi‑currency wallet, escrow and exchange‑related workflows, and implemented
+                    real‑time communication using WebSocket across the SQL Server and AngularJS 1.2 stack.</p>
+            </div>
+            <div class="tech-stack">
+                <span>ASP.NET MVC</span><span>C#</span><span>SQL
+                    Server</span><span>AngularJS</span><span>WebSocket</span><span>Microservices</span><span>Transaction
+                    Reliability</span><span>Idempotency</span>
+            </div>
+        </article>
+
+        <article class="exp-item">
+            <div class="exp-header">
+                <span class="exp-title">.NET Developer</span>
+                <span class="exp-date">2017–2018</span>
+            </div>
+            <div class="exp-company">Bitbix — Cryptocurrency Trading Platform</div>
+            <div class="exp-desc">
+                <p>Developed backend functionality using ASP.NET MVC and C#.</p>
+                <p>Integrated Ethereum‑related functionality using Nethereum and worked on trading, wallet and
+                    blockchain‑related application features.</p>
+            </div>
+            <div class="tech-stack">
+                <span>ASP.NET MVC</span><span>C#</span><span>Nethereum</span><span>SQL Server</span>
+            </div>
+        </article>
+
+        <article class="exp-item">
+            <div class="exp-header">
+                <span class="exp-title">.NET Backend Developer</span>
+                <span class="exp-date">Selected Project</span>
+            </div>
+            <div class="exp-company">IranCoin — Exchange Platform</div>
+            <div class="exp-desc">
+                <p>Extended a Bitbix‑based fork for localized cryptocurrency exchange requirements.</p>
+                <p>Worked on wallet, trading, spot and swap‑related backend functionality using ASP.NET MVC, C# and
+                    blockchain integration technologies.</p>
+            </div>
+        </article>
+
+        <article class="exp-item">
+            <div class="exp-header">
+                <span class="exp-title">.NET / WPF Developer</span>
+                <span class="exp-date">Selected Project</span>
+            </div>
+            <div class="exp-company">Ecomsys Desktop</div>
+            <div class="exp-desc">
+                <p>Developed desktop functionality using WPF and C#.</p>
+                <p>Integrated desktop functionality with ASP.NET Core backend services, working with SQL Server and
+                    business‑system data operations.</p>
+            </div>
+        </article>
+
+        <article class="exp-item">
+            <div class="exp-header">
+                <span class="exp-title">Full‑Stack / Backend Developer</span>
+                <span class="exp-date">Selected Projects</span>
+            </div>
+            <div class="exp-company">Kabby · Probin · Jandro</div>
+            <div class="exp-desc">
+                <p>Developed backend services and management portals using ASP.NET MVC.</p>
+                <p>Built cross‑platform applications using Xamarin.Forms, and an Android client with cloud‑connected
+                    backend/management system using Android/Java and ASP.NET MVC.</p>
+            </div>
+        </article>
+
+        <article class="exp-item">
+            <div class="exp-header">
+                <span class="exp-title">.NET Developer &amp; Technical Lead</span>
+                <span class="exp-date">Earlier Experience</span>
+            </div>
+            <div class="exp-company">Enterprise, Corporate &amp; Institutional Projects</div>
+            <div class="exp-desc">
+                <p>Developed database‑driven web applications using C#, ASP.NET WebForms and SQL Server.</p>
+                <p>Worked with ASP.NET AJAX and enterprise web application patterns, and with XML‑based integrations
+                    including SOAP, XML, XSD and XSLT.</p>
+                <p>Developed client‑specific business systems based on practical operational requirements, working
+                    directly with clients to turn requirements into working software.</p>
+            </div>
+        </article>
+
+        <!-- ActivePage -->
+        <h2 class="section-title">
+            <svg viewBox="0 0 16 16" fill="currentColor">
+                <path
+                    d="M2 1.75C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v12.5A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25ZM7.25 3a.75.75 0 0 1 .75-.75h2a.75.75 0 0 1 0 1.5H8a.75.75 0 0 1-.75-.75ZM5 6.25a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5A.75.75 0 0 1 5 6.25ZM5 9.25a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5A.75.75 0 0 1 5 9.25Z" />
+            </svg>
+            Selected Engineering Work — ActivePage
+        </h2>
+        <article class="exp-item">
+            <div class="exp-header">
+                <span class="exp-title">Object‑Oriented Content Platform</span>
+                <span class="exp-date">Earlier Project</span>
+            </div>
+            <div class="exp-company">ActivePage — Content Modeling &amp; Viewer</div>
+            <div class="exp-desc">
+                <p>Designed and built ActivePage as an object‑oriented content platform with a flexible content model at
+                    its core.</p>
+                <p>Focused on modeling content as structured objects with their own properties, relationships and
+                    behaviour, rather than as flat documents or generic records.</p>
+                <p>Implemented a content viewer that could render this model consistently and present complex content
+                    structures to end users.</p>
+                <p>The project reflects a long‑standing interest in software design, domain modeling and building
+                    complete systems rather than isolated screens or endpoints.</p>
+            </div>
+        </article>
+
+        <!-- evolution -->
+        <h2 class="section-title">
+            <svg viewBox="0 0 16 16" fill="currentColor">
+                <path
+                    d="M1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0ZM1.5 1.75v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Zm2.75 2.5h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5Zm0 3h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5Zm0 3h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5Z" />
+            </svg>
+            Evolution of My C# / .NET Experience
+        </h2>
+        <div class="legacy-note">
+            My experience with C# and .NET spans multiple generations of software development — from
+            object‑oriented business applications and desktop software to ASP.NET Web Forms,
+            ASP.NET MVC, Web API and modern ASP.NET Core systems. Along the way I have worked with
+            SQL Server, XML, XSD, XSLT, SOAP‑based integrations and complex content‑modeling
+            systems, building on a long‑standing foundation in software design and backend
+            engineering.
+        </div>
+
+        <!-- approach -->
+        <h2 class="section-title">
+            <svg viewBox="0 0 16 16" fill="currentColor">
+                <path
+                    d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z" />
+            </svg>
+            Engineering Approach
+        </h2>
+        <div class="summary-text">
+            I focus on turning complex requirements into structured, maintainable software — designing
+            domain models, business rules and data relationships that hold up over time. My work is
+            shaped by understanding complete systems rather than implementing isolated endpoints or
+            screens, and by making pragmatic architectural decisions across both legacy and modern
+            .NET codebases. I prefer to work directly with the actual requirements, decide what is
+            appropriate for the problem at hand, and deliver software that behaves correctly in
+            production.
+        </div>
+
+        <!-- footer -->
+        <div class="footer-note">
+            <span>📄 Available for .NET Backend Projects &amp; Consulting — Remote / Relocation / Sponsorship</span>
+            <span>
+                <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+                    <path
+                        d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z" />
+                </svg>
+                <a href="mailto:sabetsoft@gmail.com">Email</a>
+            </span>
+            <span>
+                <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+                    <path
+                        d="M9.294 6.928 14.357 1h-1.2L8.762 6.147 5.25 1H1.2l5.31 7.784L1.2 15h1.2l4.642-5.436L10.75 15h4.05L9.294 6.928ZM7.68 8.852l-.538-.775L2.83 1.91h1.843l3.49 5.02.538.775 4.539 6.535h-1.843L7.68 8.852Z" />
+                </svg>
+                <a href="https://twitter.com/sabetsoft" target="_blank" rel="noopener">Twitter</a>
+            </span>
+            <span>
+                <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+                    <path
+                        d="M14.213 1.5a.75.75 0 0 1 1.06 1.06l-12 12a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 1 1 1.06-1.06L2.5 12.72 14.213 1.5ZM12.5 2.5h-2a.75.75 0 0 1 0-1.5h3a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0V2.5h-.25Z" />
+                </svg>
+                <a href="https://t.me/sabetsoft_dev" target="_blank" rel="noopener">Telegram</a>
+            </span>
+            <span>
+                <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+                    <path
+                        d="M6.5 1A1.5 1.5 0 0 0 5 2.5V5H1.5A1.5 1.5 0 0 0 0 6.5v7A1.5 1.5 0 0 0 1.5 15h13a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 14.5 5H11V2.5A1.5 1.5 0 0 0 9.5 1h-3ZM10 5H6V2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V5ZM1.5 6h13a.5.5 0 0 1 .5.5v2H1V6.5a.5.5 0 0 1 .5-.5ZM1 10h14v3.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V10Zm5-2.5h4V9H6v-1.5Z" />
+                </svg>
+                <a href="https://www.linkedin.com/in/asabetghadam" target="_blank" rel="noopener">LinkedIn</a>
+            </span>
+            <span>
+                <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+                    <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
+                </svg>
+                <a href="https://github.com/sabetghadam" target="_blank" rel="noopener">GitHub</a>
+            </span>
+        </div>
+        <div class="copyright">
+            Most source code is private due to client confidentiality. Built by Abbas Sabetghadam · Published under
+            Sabetsoft
+        </div>
+
+    </div>
+</body>
+
+</html>
